@@ -14,6 +14,7 @@ Project setup
 
 
 | Bun Command | npm Command |
+
 | --- | --- |
 | `bun add` | `npm install` |
 | `bun build` | `npm run build` |
@@ -24,4 +25,13 @@ Project setup
 
 ** I chose bun as the package manager / build tool / runtime because it's faster than npm and yarn and I expect less dependency issues with React 19. If we need to switch to npm or yarn, we can do it later.
 
+### 19-02-2025
 
+TODO:
+
+- componenten skeletons (tanstack table)
+- hover states
+- TTL conversie naar JSON
+- Node visualization (force-directed graph?)
+- In een Docker container zetten van deze omgeving
+- Node in kennisgraaf is soms ook een artikel (van antwoord naar databron)
