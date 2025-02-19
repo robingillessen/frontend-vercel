@@ -7,7 +7,7 @@ const TableSkeleton = () => {
       <thead>
         <tr>
           {[...Array(3)].map((_, index) => (
-            <th key={index} className="border">
+            <th key={index} className="border border-gray-400">
               <div
                 className="h-4 bg-gray-300 animate-pulse"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -22,7 +22,7 @@ const TableSkeleton = () => {
             {[...Array(3)].map((_, colIndex) => {
               const delay = rowIndex * 0.1 + colIndex * 0.1;
               return (
-                <td key={colIndex} className="border">
+                <td key={colIndex} className="border border-gray-400">
                   <div
                     className="h-4 bg-gray-300 animate-pulse"
                     style={{ animationDelay: `${delay}s` }}
