@@ -4,6 +4,8 @@ import { useState } from "react";
 import LinePlot from "@/components/line-chart";
 import TableSkeleton from "@/components/skeleton-loaders/tanstack-table-loader";
 import ExampleTTL from "@/components/example-ttl";
+import { Button } from "@/components/ui/button";
+
 export default function Home() {
   const [data, setData] = useState(() => d3.ticks(-2, 2, 200).map(Math.sin));
 
@@ -19,6 +21,7 @@ export default function Home() {
   <div className="flex flex-col items-center justify-center h-screen">
     <TableSkeleton />
     <ExampleTTL />
+    <Button>Click me</Button>
   </div>
   );
 }
