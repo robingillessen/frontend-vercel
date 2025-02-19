@@ -35,3 +35,9 @@ TODO:
 - Node visualization (force-directed graph?)
 - In een Docker container zetten van deze omgeving
 - Node in kennisgraaf is soms ook een artikel (van antwoord naar databron)
+
+- Set up Docker environment
+- create a util function to merge tailwind classes
+- Get an idea on why to choose JSONLD over regular JSON
+- Huisstijl overheid inbouwen
+- 

@@ -2,7 +2,8 @@
 import * as d3 from "d3";
 import { useState } from "react";
 import LinePlot from "@/components/line-chart";
-
+import TableSkeleton from "@/components/skeleton-loaders/tanstack-table-loader";
+import ExampleTTL from "@/components/example-ttl";
 export default function Home() {
   const [data, setData] = useState(() => d3.ticks(-2, 2, 200).map(Math.sin));
 
@@ -11,9 +12,13 @@ export default function Home() {
     setData(data.slice(-200).concat(Math.atan2(x, y)));
   }
   return (
-   <div onMouseMove={onMouseMove} className="flex flex-col items-center justify-center h-screen">
-    <h1>Wegwijs in Regels</h1>
-    <LinePlot data={data} />
-   </div>
+  //  <div onMouseMove={onMouseMove} className="flex flex-col items-center justify-center h-screen">
+  //   <h1>Wegwijs in Regels</h1>
+  //   <LinePlot data={data} />
+  //  </div>
+  <div className="flex flex-col items-center justify-center h-screen">
+    <TableSkeleton />
+    <ExampleTTL />
+  </div>
   );
 }
