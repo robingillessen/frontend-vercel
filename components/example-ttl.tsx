@@ -102,8 +102,8 @@ const App = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h2>TTL RDF naar JSON-LD Visualisatie</h2>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 shadow-xl">
+      <h2 className="italic">TTL RDF naar JSON-LD Visualisatie</h2>
       {jsonLD && <GraphView data={jsonLD} />}
     </div>
   );

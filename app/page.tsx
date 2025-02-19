@@ -21,7 +21,7 @@ export default function Home() {
   <div className="flex flex-col items-center justify-center h-screen">
     <TableSkeleton />
     <ExampleTTL />
-    <Button>Click me</Button>
+    <Button className="bg-lichtblauw">Click me</Button>
   </div>
   );
 }

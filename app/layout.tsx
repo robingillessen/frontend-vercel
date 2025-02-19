@@ -1,16 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const rijksOverheidFont = localFont({
+  src: [
+    {
+      path: '../fonts/rijksoverheidsansheading-bold.ttf',
+      weight: '400',
+      style: 'bold',
+    },
+    {
+      path: '../fonts/rijksoverheidsanstext-regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/rijksoverheidserif-italic.ttf',
+      weight: '400',
+      style: 'italic',
+    },
+    {
+      path: '../fonts/rijksoverheidserif-regular.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Wegwijs in Regels",
@@ -25,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${rijksOverheidFont.className} antialiased`}
       >
         {children}
       </body>

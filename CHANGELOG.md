@@ -39,5 +39,5 @@ TODO:
 - Set up Docker environment
 - create a util function to merge tailwind classes
 - Get an idea on why to choose JSONLD over regular JSON
-- Huisstijl overheid inbouwen
-- 
+- Build in the overheid branding (font, colors, etc.)
+- Set up the beginning of the custimizable design system
