@@ -42,6 +42,48 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  /* =============================================
+     Rijksoverheid Huisstijl Kleuren
+     ---------------------------------------------
+     Hieronder vind je de kleurvariabelen volgens
+     de Rijksoverheid huisstijl, ingedeeld in:
+     
+     1. Basiskleur
+     2. Communicatiekleuren
+     3. Grijstinten (online)
+     ============================================= */
+  
+  /* 1. Basiskleur */
+  --color-lintblauw: #154273;  /* Lintblauw: basiskleur (PMS 7462c) */
+  
+  /* 2. Communicatiekleuren */
+  --color-paars: #42145f;         /* Paars (PMS 2627c) */
+  --color-violet: #a90061;        /* Violet (PMS 227c) */
+  --color-robijnrood: #ca005d;     /* Robijnrood (PMS Rubine Red) */
+  --color-roze: #f092cd;           /* Roze (PMS 223C) */
+  --color-rood: #d52b1e;           /* Rood (PMS 485C) */
+  --color-oranje: #e17000;         /* Oranje (PMS 152C) */
+  --color-donkergeel: #ffb612;      /* Donkergeel (PMS 1235C) */
+  --color-geel: #f9e11e;           /* Geel (PMS 107C) */
+  --color-donkerbruin: #673327;    /* Donkerbruin (PMS 483C) */
+  --color-bruin: #94710a;         /* Bruin (PMS 125C) */
+  --color-donkergroen: #275937;    /* Donkergroen (PMS 357C) */
+  --color-groen: #39870c;          /* Groen (PMS 369C) */
+  --color-mosgroen: #777b00;       /* Mosgroen (PMS 384C) */
+  --color-mintgroen: #76d2b6;      /* Mintgroen (PMS 338C) */
+  --color-donkerblauw: #01689b;    /* Donkerblauw (PMS 300C) */
+  --color-hemelblauw: #007bc7;     /* Hemelblauw (PMS Cyaan) */
+  --color-lichtblauw: #8fcae7;     /* Lichtblauw (PMS 2905C) */
+  
+  /* 3. Grijstinten (online) */
+  --color-grijs-1: #f3f3f3;
+  --color-grijs-2: #e6e6e6;
+  --color-grijs-3: #cccccc;
+  --color-grijs-4: #b4b4b4;
+  --color-grijs-5: #999999;
+  --color-grijs-6: #696969;
+  --color-grijs-7: #535353;
 }
 
 /*
