@@ -14,16 +14,16 @@ const rijksOverheidFont = localFont({
       weight: '400',
       style: 'normal',
     },
-    {
-      path: '../fonts/rijksoverheidserif-italic.ttf',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: '../fonts/rijksoverheidserif-regular.ttf',
-      weight: '400',
-      style: 'normal',
-    },
+    // {
+    //   path: '../fonts/rijksoverheidserif-italic.ttf',
+    //   weight: '400',
+    //   style: 'italic',
+    // },
+    // {
+    //   path: '../fonts/rijksoverheidserif-regular.ttf',
+    //   weight: '400',
+    //   style: 'normal',
+    // },
   ],
   display: 'swap',
 })

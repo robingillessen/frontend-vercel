@@ -12,6 +12,28 @@ Project setup
 - Added eslint for linting
 
 
+\* React 19 is stable for a couple of months now.
+
+** I chose bun as the package manager / build tool / runtime because it's faster than npm and yarn and I expect less dependency issues with React 19. If we need to switch to npm or yarn, we can do it later.
+
+### 19-02-2025
+
+
+- Set up Docker environment
+- Node visualization (force-directed graph?)
+- componenten skeletons (tanstack table)
+- create a util function to merge tailwind classes
+- Get an idea on why to choose JSONLD over regular JSON
+- Build in the overheid branding (font, colors, etc.)
+- Set up the beginning of the custimizable design system
+- environment variables and upgrade to tailwind v4
+- Add a basic chat interface
+- Added logos to the project
+
+
+### COMMANDS
+
+### Bun
 
 | Bun Command | npm Command |
 
@@ -21,23 +43,12 @@ Project setup
 | `bun start` | `npm run start` |
 | `bunx` | `npx` |
 
-\* React 19 is stable for a couple of months now.
 
-** I chose bun as the package manager / build tool / runtime because it's faster than npm and yarn and I expect less dependency issues with React 19. If we need to switch to npm or yarn, we can do it later.
+### Docker
 
-### 19-02-2025
+```bash
+docker build -t wegwijs-frontend .
+docker run -p 31033:3000 wegwijs-frontend
+```
 
-TODO:
 
-- componenten skeletons (tanstack table)
-- hover states
-- TTL conversie naar JSON
-- Node visualization (force-directed graph?)
-- In een Docker container zetten van deze omgeving
-- Node in kennisgraaf is soms ook een artikel (van antwoord naar databron)
-
-- Set up Docker environment
-- create a util function to merge tailwind classes
-- Get an idea on why to choose JSONLD over regular JSON
-- Build in the overheid branding (font, colors, etc.)
-- Set up the beginning of the custimizable design system
