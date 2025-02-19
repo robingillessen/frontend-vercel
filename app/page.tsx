@@ -6,7 +6,10 @@ import { z } from "zod";
 import ValidationText from "@/components/validation-text";
 
 const schema = z.object({
-  text: z.string().min(1, { message: "Vul een vraag in" }),
+  text: z
+    .string()
+    .min(1, { message: "Vul een vraag in" })
+    .refine((text) => text.length < 100, { message: "Vraag is te lang" }),
 });
 
 export default function Home() {
@@ -17,19 +20,20 @@ export default function Home() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {
       e.preventDefault(); // Prevents default newline insertion, if that's desired
-      try {
-        const result = schema.safeParse({ text });
-        if (result.success) {
-          console.log("Enter pressed with text:", text);
-          setText("");
-          // Add your custom logic here, for example, sending a message.
-        } else {
-          console.error("Validation error:", result.error);
-          setValidationText('Er is een fout opgetreden');
-        }
-      } catch (error) {
-        console.error("Validation error:", error);
-        setValidationText("Er is een fout opgetreden");
+
+      const result = schema.safeParse({ text });
+      if (result.success) {
+        console.log("Enter pressed with text:", text);
+        setText("");
+        setValidationText(""); // Clear previous error messages on success
+        // Add your custom logic here, for example, sending a message.
+      } else {
+        console.error("Validation error:", result.error);
+        // Log and display the correct error message from Zod
+        const errorMessage =
+          result.error.issues[0]?.message || "Er is een validatiefout opgetreden";
+        console.log("Zod error message:", errorMessage);
+        setValidationText(errorMessage);
       }
     }
   };
@@ -37,7 +41,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center h-screen relative">
       <Image
-        className="absolute top-0 w-1/2 left-0 translate-x-1/2 object-cover"
+        className="absolute top-0 w-1/2 left-0 translate-x-1/2 object-contain max-h-[400px]"
         src="/logo-compact-blauw.svg"
         alt="Logo Rijksoverheid"
         width={500}
@@ -60,7 +64,12 @@ export default function Home() {
           onKeyDown={handleKeyDown}
         />
         {validationText && (
-          <ValidationText className="text-center pt-2" text={validationText} mood="error" size="small" />
+          <ValidationText 
+            className="text-center pt-2" 
+            text={validationText} 
+            mood="error" 
+            size="small" 
+          />
         )}
       </div>
       <p className="text-xs absolute bottom-0 left-0 right-0 text-center pb-4">
