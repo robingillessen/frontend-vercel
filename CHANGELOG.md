@@ -29,6 +29,8 @@ Project setup
 - environment variables and upgrade to tailwind v4
 - Add a basic chat interface
 - Added logos to the project
+- Added a validation text component
+- Added a textarea component that resizes based on the content
 
 
 ### COMMANDS
