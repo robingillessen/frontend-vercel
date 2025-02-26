@@ -10,9 +10,9 @@ import {
 
 interface SidebarState {
   isOpen: boolean;
-
-  // Typed sources
   legalData: LegalData | null;
+  // create a filter property for the source. type is one of keys of the legalData object
+  filter: keyof LegalData | "all";
 
   // Helper properties for quickly accessing specific source types
   lawArticles: LawArticle[];
@@ -24,6 +24,8 @@ interface SidebarState {
 
   // Added isEmpty property
   isEmpty: boolean;
+  // Total number of items across all sources
+  totalItems: number;
 
   // UI actions
   openSidebar: () => void;
@@ -33,11 +35,12 @@ interface SidebarState {
   // Data actions
   setLegalData: (data: LegalData) => void;
   clearLegalData: () => void;
+  setFilter: (filter: keyof LegalData | "all") => void;
 }
 
 export const useSidebarStore = create<SidebarState>((set) => ({
   isOpen: false,
-
+  filter: "all",
   // Initialize typed sources
   legalData: null,
   lawArticles: [],
@@ -46,9 +49,11 @@ export const useSidebarStore = create<SidebarState>((set) => ({
   selectielijstRows: [],
   lidoSubgraph: null,
   jasSubgraph: null,
-  isEmpty: true, // Initialize as true since all arrays are empty
+  isEmpty: true,
+  totalItems: 0,
 
   // UI actions
+  setFilter: (filter: keyof LegalData | "all") => set({ filter }),
   openSidebar: () => set({ isOpen: true }),
   closeSidebar: () => set({ isOpen: false }),
   toggleSidebar: () => set((state) => ({ isOpen: !state.isOpen })),
@@ -60,11 +65,13 @@ export const useSidebarStore = create<SidebarState>((set) => ({
     const taxonomyTerms = data.taxonomy_terms || [];
     const selectielijstRows = data.selectielijst_rows || [];
 
-    const isEmpty =
-      lawArticles.length === 0 &&
-      werkwijzes.length === 0 &&
-      taxonomyTerms.length === 0 &&
-      selectielijstRows.length === 0;
+    const totalItems =
+      lawArticles.length +
+      werkwijzes.length +
+      taxonomyTerms.length +
+      selectielijstRows.length;
+
+    const isEmpty = totalItems === 0;
 
     set({
       legalData: data,
@@ -75,6 +82,7 @@ export const useSidebarStore = create<SidebarState>((set) => ({
       lidoSubgraph: data.lido_subgraph || null,
       jasSubgraph: data.jas_subgraph || null,
       isEmpty,
+      totalItems,
       isOpen: true, // Auto-open sidebar when data is loaded
     });
   },
@@ -89,5 +97,6 @@ export const useSidebarStore = create<SidebarState>((set) => ({
       lidoSubgraph: null,
       jasSubgraph: null,
       isEmpty: true, // Reset to true when clearing data
+      totalItems: 0, // Reset total count to 0
     }),
 }));

@@ -73,3 +73,5 @@ export interface LegalData {
   lido_subgraph: Subgraph;
   jas_subgraph: Subgraph;
 }
+
+export type TFilter = keyof LegalData | "all";

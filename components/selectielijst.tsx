@@ -6,12 +6,14 @@ import { SidebarMenuItem } from "./ui/sidebar";
 import { Table } from "./ui/table";
 import { Badge } from "./ui/badge";
 import { SelectielijstRow } from "@/lib/types";
-
+import { useSidebarStore } from "@/store/sidebar-store";
 export const Selectielijst = ({
   selectielijstRows,
 }: {
   selectielijstRows: SelectielijstRow[];
 }) => {
+  const { filter } = useSidebarStore();
+  const isFiltered = filter === "selectielijst_rows" || filter === "all";
   const tableHeaders =
     selectielijstRows.length > 0
       ? Object.keys(selectielijstRows[0]).filter(
@@ -20,7 +22,7 @@ export const Selectielijst = ({
       : [];
   return (
     <>
-      {selectielijstRows.length > 0 && (
+      {isFiltered && (
         <SidebarMenuItem
           key="selectielijst"
           className="mb-2 border rounded-md p-2 overflow-hidden"

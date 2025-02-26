@@ -4,7 +4,6 @@ import { useSidebarStore } from "@/store/sidebar-store";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ArrowDownUp, Filter, Search, SortAsc } from "lucide-react"; // Make sure you have lucide-react installed
-import { useState } from "react";
 import { SidebarContent } from "./sidebar-content";
 import { Input } from "./ui/input";
 import {
@@ -13,19 +12,33 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { TFilter } from "@/lib/types";
 
 export function SourcesSidebar() {
-  const { isOpen, closeSidebar } = useSidebarStore();
+  const {
+    isOpen,
+    closeSidebar,
+    taxonomyTerms,
+    lawArticles,
+    werkwijzes,
+    selectielijstRows,
+    totalItems,
+    filter,
+    setFilter,
+  } = useSidebarStore();
 
   // Example filter categories - replace with your actual data
   const filters = [
-    { id: "all", name: "Alles", count: null },
-    { id: "wetten", name: "Wetten", count: 6 },
-    { id: "werkwijzes", name: "Werkwijzes", count: 2 },
-    { id: "jurisprudentie", name: "Jurisprudentie", count: 27 },
+    { id: "all", name: "Alles", count: totalItems },
+    { id: "law_articles", name: "Wetten", count: lawArticles.length },
+    { id: "werkwijzes", name: "Werkwijzes", count: werkwijzes.length },
+    { id: "taxonomy_terms", name: "Taxonomie", count: taxonomyTerms.length },
+    {
+      id: "selectielijst_rows",
+      name: "Selectielijst",
+      count: selectielijstRows.length,
+    },
   ];
-
-  const [activeFilter, setActiveFilter] = useState("all");
 
   return (
     <div
@@ -66,18 +79,18 @@ export function SourcesSidebar() {
 
           {/* Filter buttons */}
           <div className="flex flex-wrap gap-2">
-            {filters.map((filter) => (
+            {filters.map((f) => (
               <Button
-                key={filter.id}
+                key={f.id}
                 variant="outline"
                 size="sm"
-                onClick={() => setActiveFilter(filter.id)}
+                onClick={() => setFilter(f.id as TFilter)}
                 className={cn(
                   "text-xs rounded-full border-2",
-                  activeFilter === filter.id && "border-lichtblauw"
+                  filter === f.id && "border-lichtblauw"
                 )}
               >
-                {filter.name} {filter.count !== null && `(${filter.count})`}
+                {f.name} {f.count !== null && `(${f.count})`}
               </Button>
             ))}
           </div>
