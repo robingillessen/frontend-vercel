@@ -48,15 +48,15 @@
      ---------------------------------------------
      Hieronder vind je de kleurvariabelen volgens
      de Rijksoverheid huisstijl, ingedeeld in:
-     
+
      1. Basiskleur
      2. Communicatiekleuren
      3. Grijstinten (online)
      ============================================= */
-  
+
   /* 1. Basiskleur */
   --color-lintblauw: #154273;  /* Lintblauw: basiskleur (PMS 7462c) */
-  
+
   /* 2. Communicatiekleuren */
   --color-paars: #42145f;         /* Paars (PMS 2627c) */
   --color-violet: #a90061;        /* Violet (PMS 227c) */
@@ -75,7 +75,7 @@
   --color-donkerblauw: #01689b;    /* Donkerblauw (PMS 300C) */
   --color-hemelblauw: #007bc7;     /* Hemelblauw (PMS Cyaan) */
   --color-lichtblauw: #8fcae7;     /* Lichtblauw (PMS 2905C) */
-  
+
   /* 3. Grijstinten (online) */
   --color-grijs-1: #f3f3f3;
   --color-grijs-2: #e6e6e6;
@@ -180,4 +180,45 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-lintblauw);
 }
 
+:root {
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
 

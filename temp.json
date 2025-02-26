@@ -1,0 +1,170 @@
+{
+    "answer": "Deze wet is niet van toepassing op deze vraag.",
+    "law_articles": [
+        {
+            "law_title": "Wet open overheid",
+            "law_article": "Artikel 5.2",
+            "url": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01",
+            "text_fragment": "Het bestuursorgaan kan over persoonlijke beleidsopvattingen met het oog op een goede en democratische bestuursvoering informatie verstrekken in niet tot personen herleidbare vorm. Indien degene die deze opvattingen heeft geuit of zich erachter heeft gesteld, daarmee heeft ingestemd, kan de informatie in tot personen herleidbare vorm worden verstrekt.",
+            "date": "1 mei 2022",
+            "URI": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01"
+        },
+        {
+            "law_title": "Wet open overheid",
+            "law_article": "Artikel 5.2",
+            "url": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01",
+            "text_fragment": "In afwijking van het eerste lid wordt bij milieu-informatie het belang van de bescherming van de persoonlijke beleidsopvattingen afgewogen tegen het belang van openbaarmaking. Informatie over persoonlijke beleidsopvattingen kan worden verstrekt in niet tot personen herleidbare vorm. Indien degene die deze opvattingen heeft geuit of zich erachter heeft gesteld, daarmee heeft ingestemd, kan de informatie in tot personen herleidbare vorm worden verstrekt.",
+            "date": "1 mei 2022",
+            "URI": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01"
+        }
+    ],
+    "werkwijzes": [
+        {
+            "werkwijze_title": "Wet open overheid",
+            "url": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01",
+            "text_fragment": "Het bestuursorgaan kan over persoonlijke beleidsopvattingen met het oog op een goede en democratische bestuursvoering informatie verstrekken in niet tot personen herleidbare vorm. Indien degene die deze opvattingen heeft geuit of zich erachter heeft gesteld, daarmee heeft ingestemd, kan de informatie in tot personen herleidbare vorm worden verstrekt.",
+            "date": "1 mei 2022",
+            "URI": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01"
+        },
+        {
+            "werkwijze_title": "Wet open overheid",
+            "url": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01",
+            "text_fragment": "In afwijking van het eerste lid wordt bij milieu-informatie het belang van de bescherming van de persoonlijke beleidsopvattingen afgewogen tegen het belang van openbaarmaking. Informatie over persoonlijke beleidsopvattingen kan worden verstrekt in niet tot personen herleidbare vorm. Indien degene die deze opvattingen heeft geuit of zich erachter heeft gesteld, daarmee heeft ingestemd, kan de informatie in tot personen herleidbare vorm worden verstrekt.",
+            "date": "1 mei 2022",
+            "URI": "https://wetten.overheid.nl/jci1.3:c:BWBR0045754&hoofdstuk=5&artikel=5.2&z=2025-01-01&g=2025-01-01"
+        }
+    ],
+    "taxonomy_terms": [
+        {
+            "beg-sbb:Label": "Persoonsgegevens",
+            "wir:context": [
+                {
+                    "beg-sbb:Definition": "Betreft als bedoeld in paragraaf 3.1 onderscheidenlijk paragraaf 3.2 van de Uitvoeringswet Algemene verordening gegevensbescherming, tenzij de betrokkene uitdrukkelijk toestemming heeft gegeven voor de openbaarmaking van deze persoonsgegevens of deze persoonsgegevens kennelijk door de betrokkene openbaar zijn gemaakt",
+                    "beg-sbb:Source": "lido:BWBR0045754%2F16045104%2F2022-05-01%2F2022-05-01",
+                    "wir:naderToegelicht": [
+                        "lido:BWBR0040940%2F14570024%2F2018-05-25%2F2018-05-25",
+                        "lido:BWBR0040940%2F14570064%2F2018-05-25%2F2018-05-25"
+                    ]
+                },
+                {
+                    "beg-sbb:Definition": "alle informatie over een geïdentificeerde of identificeerbare natuurlijke persoon („de betrokkene”); als identificeerbaar wordt beschouwd een natuurlijke persoon die direct of indirect kan worden geïdentificeerd, met name aan de hand van een identificator zoals een naam, een identificatienummer, locatiegegevens, een online identificator of van een of meer elementen die kenmerkend zijn voor de fysieke, fysiologische, genetische, psychische, economische, culturele of sociale identiteit van die natuurlijke persoon",
+                    "beg-sbb:Source": "eurlex:reg%2F2016%2F679%2Foj%2Feng",
+                    "wir:naderToegelicht": []
+                }
+            ]
+        },
+        {
+            "beg-sbb:Label": "Bijzonder Categorie Persoonsgegevens",
+            "wir:context": [
+                {
+                    "beg-sbb:Definition": "de categorieën van persoonsgegevens, bedoeld in artikel 9, eerste lid, van de verordening",
+                    "beg-sbb:Source": "lido:BWBR0040940%2F14569674%2F2018-05-25%2F2018-05-25",
+                    "wir:naderToegelicht": [
+                        "lido:BWBR0040940%2F14569774%2F2018-05-25%2F2018-05-25"
+                    ]
+                }
+            ]
+        }
+    ],
+    "selectielijst_rows": [
+        {
+            "Proces": "2.4 Vergunningverlening",
+            "Onderwerp": "2.4.1. (Keur)ontheffingen en/of vergunningen verleend door het waterschap",
+            "Omschrijving": "(Keur)ontheffingen en/of vergunningen voor onbepaalde tijd verleend m.b.t. werken, met aanvraag en tekeningen, revisietekeningen c.q. as built tekeningen",
+            "Bewaartermijn": "B5 (Stukken die bepalend zijn voor de wijze waarop beleidsuitvoering op hoofdlijnen plaatsvindt)",
+            "Voorbeeldstukken": "Keurontheffing (b.v. dam met duiker), Vaarvergunning, Privaatrechtelijke vergunning (b.v. visvergunning voor een hengelsportvereniging), Vergunning voor onderbemaling, Watervergunning"
+        }
+    ],
+    "lido_subgraph": {
+        "nodes": [
+            {
+                "id": "http://linkeddata.overheid.nl/terms/bwb/id/BWBR0045754/16046034/2022-05-01/2022-05-01",
+                "label": "Artikel 3.3b"
+            },
+            {
+                "id": "http://linkeddata.overheid.nl/terms/bwb/id/BWBR0045754/16045964/2024-08-01/2024-08-01",
+                "label": "Wet open overheid"
+            }
+        ],
+        "links": [
+            {
+                "source": "http://linkeddata.overheid.nl/terms/bwb/id/BWBR0045754/16046034/2022-05-01/2022-05-01",
+                "target": "http://linkeddata.overheid.nl/terms/bwb/id/BWBR0045754/16045964/2024-08-01/2024-08-01",
+                "label": "isOnderdeelVanRegeling"
+            }
+        ]
+    },
+    "jas_subgraph": {
+        "nodes": [
+            {
+                "id": "jas:archiefart3",
+                "label": "Archief Artikel 3"
+            },
+            {
+                "id": "lido:BWBR0007376/1214364/1996-01-01/1996-01-01",
+                "label": "Org Artikel"
+            },
+            {
+                "id": "rechtssubject:overheidsorganen",
+                "label": "De overheidsorganen"
+            },
+            {
+                "id": "rechtsbetrekkingverplichting:1",
+                "label": "Verplichting: Brengen en bewaren in goede staat"
+            },
+            {
+                "id": "rechtsbetrekkingverplichting:2",
+                "label": "Verplichting: Zorg voor vernietiging"
+            },
+            {
+                "id": "rechtsobject:archiefbescheiden",
+                "label": "Archiefbescheiden"
+            },
+            {
+                "id": "voorwaarde:vernietiging",
+                "label": "Voorwaarde: In aanmerking komende"
+            },
+            {
+                "id": "rechtsfeit:vernietiging",
+                "label": "Rechtsfeit: Vernietiging"
+            }
+        ],
+        "links": [
+            {
+                "source": "jas:archiefart3",
+                "target": "lido:BWBR0007376/1214364/1996-01-01/1996-01-01",
+                "label": "orgArtikel"
+            },
+            {
+                "source": "jas:archiefart3",
+                "target": "rechtssubject:overheidsorganen",
+                "label": "rechtssubject"
+            },
+            {
+                "source": "jas:archiefart3",
+                "target": "rechtsbetrekkingverplichting:1",
+                "label": "rechtsbetrekkingverplichting"
+            },
+            {
+                "source": "jas:archiefart3",
+                "target": "rechtsbetrekkingverplichting:2",
+                "label": "rechtsbetrekkingverplichting"
+            },
+            {
+                "source": "jas:archiefart3",
+                "target": "rechtsobject:archiefbescheiden",
+                "label": "rechtsobject"
+            },
+            {
+                "source": "jas:archiefart3",
+                "target": "voorwaarde:vernietiging",
+                "label": "voorwaarde"
+            },
+            {
+                "source": "jas:archiefart3",
+                "target": "rechtsfeit:vernietiging",
+                "label": "rechtsfeit"
+            }
+        ]
+    }
+}
