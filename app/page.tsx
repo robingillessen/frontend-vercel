@@ -60,22 +60,21 @@ export default function Home() {
 
   return (
     <div className="flex h-screen">
+      {!isOpen && (
+        <Image
+          className="absolute -top-10 w-1/2 left-0 translate-x-1/2 object-contain max-h-[400px]"
+          src="/logo-compact-blauw.svg"
+          alt="Logo Rijksoverheid"
+          width={500}
+          height={500}
+        />
+      )}
       {/* Main content area */}
       <div
         className={`flex flex-col transition-all duration-300 ${
           isOpen ? "w-[70%]" : "w-full"
         }`}
       >
-        {!isOpen && (
-          <Image
-            className="absolute top-0 w-1/2 left-0 translate-x-1/2 object-contain max-h-[400px]"
-            src="/logo-compact-blauw.svg"
-            alt="Logo Rijksoverheid"
-            width={500}
-            height={500}
-          />
-        )}
-
         <div className="flex-1 flex flex-col h-fit justify-center">
           <MainContent
             messages={messages}

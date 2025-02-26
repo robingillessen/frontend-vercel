@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @plugin 'tailwindcss-animate';
 
@@ -55,26 +55,26 @@
      ============================================= */
 
   /* 1. Basiskleur */
-  --color-lintblauw: #154273;  /* Lintblauw: basiskleur (PMS 7462c) */
+  --color-lintblauw: #154273; /* Lintblauw: basiskleur (PMS 7462c) */
 
   /* 2. Communicatiekleuren */
-  --color-paars: #42145f;         /* Paars (PMS 2627c) */
-  --color-violet: #a90061;        /* Violet (PMS 227c) */
-  --color-robijnrood: #ca005d;     /* Robijnrood (PMS Rubine Red) */
-  --color-roze: #f092cd;           /* Roze (PMS 223C) */
-  --color-rood: #d52b1e;           /* Rood (PMS 485C) */
-  --color-oranje: #e17000;         /* Oranje (PMS 152C) */
-  --color-donkergeel: #ffb612;      /* Donkergeel (PMS 1235C) */
-  --color-geel: #f9e11e;           /* Geel (PMS 107C) */
-  --color-donkerbruin: #673327;    /* Donkerbruin (PMS 483C) */
-  --color-bruin: #94710a;         /* Bruin (PMS 125C) */
-  --color-donkergroen: #275937;    /* Donkergroen (PMS 357C) */
-  --color-groen: #39870c;          /* Groen (PMS 369C) */
-  --color-mosgroen: #777b00;       /* Mosgroen (PMS 384C) */
-  --color-mintgroen: #76d2b6;      /* Mintgroen (PMS 338C) */
-  --color-donkerblauw: #01689b;    /* Donkerblauw (PMS 300C) */
-  --color-hemelblauw: #007bc7;     /* Hemelblauw (PMS Cyaan) */
-  --color-lichtblauw: #8fcae7;     /* Lichtblauw (PMS 2905C) */
+  --color-paars: #42145f; /* Paars (PMS 2627c) */
+  --color-violet: #a90061; /* Violet (PMS 227c) */
+  --color-robijnrood: #ca005d; /* Robijnrood (PMS Rubine Red) */
+  --color-roze: #f092cd; /* Roze (PMS 223C) */
+  --color-rood: #d52b1e; /* Rood (PMS 485C) */
+  --color-oranje: #e17000; /* Oranje (PMS 152C) */
+  --color-donkergeel: #ffb612; /* Donkergeel (PMS 1235C) */
+  --color-geel: #f9e11e; /* Geel (PMS 107C) */
+  --color-donkerbruin: #673327; /* Donkerbruin (PMS 483C) */
+  --color-bruin: #94710a; /* Bruin (PMS 125C) */
+  --color-donkergroen: #275937; /* Donkergroen (PMS 357C) */
+  --color-groen: #39870c; /* Groen (PMS 369C) */
+  --color-mosgroen: #777b00; /* Mosgroen (PMS 384C) */
+  --color-mintgroen: #76d2b6; /* Mintgroen (PMS 338C) */
+  --color-donkerblauw: #01689b; /* Donkerblauw (PMS 300C) */
+  --color-hemelblauw: #007bc7; /* Hemelblauw (PMS Cyaan) */
+  --color-lichtblauw: #8fcae7; /* Lichtblauw (PMS 2905C) */
 
   /* 3. Grijstinten (online) */
   --color-grijs-1: #f3f3f3;
@@ -176,7 +176,12 @@
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--color-lintblauw);
 }
 
@@ -221,4 +226,3 @@ h1, h2, h3, h4, h5, h6 {
     @apply bg-background text-foreground;
   }
 }
-
