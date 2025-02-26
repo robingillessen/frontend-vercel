@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { SidebarMenuItem } from "../ui/sidebar";
 import { Badge } from "../ui/badge";
 import { Werkwijze } from "@/lib/types";

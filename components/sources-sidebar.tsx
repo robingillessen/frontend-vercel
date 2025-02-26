@@ -3,7 +3,7 @@
 import { useSidebarStore } from "@/store/sidebar-store";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { ArrowDownUp, Filter, Search, SortAsc } from "lucide-react"; // Make sure you have lucide-react installed
+import { ArrowDownUp, Search } from "lucide-react"; // Make sure you have lucide-react installed
 import { SidebarContent } from "./sidebar-content";
 import { Input } from "./ui/input";
 import {
@@ -17,7 +17,6 @@ import { TFilter } from "@/lib/types";
 export function SourcesSidebar() {
   const {
     isOpen,
-    closeSidebar,
     taxonomyTerms,
     lawArticles,
     werkwijzes,

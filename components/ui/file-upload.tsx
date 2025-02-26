@@ -9,7 +9,6 @@ type FileUploadProps = {
 const FileUpload = ({ onFileProcessed }: FileUploadProps) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [fileName, setFileName] = useState<string | null>(null);
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const triggerFileDialog = () => {
     fileInputRef.current?.click();
@@ -20,7 +19,6 @@ const FileUpload = ({ onFileProcessed }: FileUploadProps) => {
     if (files && files.length > 0) {
       const file = files[0];
       setFileName(file.name);
-      setSelectedFile(file);
 
       // Notify parent component if needed
       if (onFileProcessed) {
@@ -31,7 +29,6 @@ const FileUpload = ({ onFileProcessed }: FileUploadProps) => {
       // File processing logic can be added here
     } else {
       setFileName(null);
-      setSelectedFile(null);
     }
   };
 
