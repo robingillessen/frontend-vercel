@@ -23,7 +23,7 @@ export const ChatInput = ({ text, setText, handleKeyDown, isOpen, validationText
         placeholder="Stel een vraag over de AVG, Woo of archiefwet"
         className={cn("transition-all duration-300 relative pr-16", isOpen ? "w-full" : "max-w-3xl")}
       />
-      <WandSparkles className="ml-4 absolute top-1/2 right-12 -translate-y-1/2" />
+      <WandSparkles className="ml-4 absolute top-1/2 right-12 -translate-y-1/2 text-lintblauw" />
     </div>
     {validationText && (
     <ValidationText 
