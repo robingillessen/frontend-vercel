@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { SquarePen } from "lucide-react";
 import { Message } from "@/lib/types";
@@ -13,8 +13,18 @@ export const ChatView = ({ messages, handleNewChat }: ChatViewProps) => {
   const isWaitingForResponse =
     messages.length > 0 && messages[messages.length - 1].role === "user";
 
+  // Add ref for the messages container
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Scroll to bottom when messages change or when waiting for a response
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, isWaitingForResponse]);
+
   return (
-    <div className="flex flex-col h-full pt-10">
+    <div className="flex flex-col h-[calc(100vh-100px)] pt-10 overflow-hidden ">
       {/* Chat messages */}
       {/* New chat button, just a refresh button */}
       <div className="flex justify-start pl-4">
@@ -58,6 +68,9 @@ export const ChatView = ({ messages, handleNewChat }: ChatViewProps) => {
             </div>
           </div>
         )}
+
+        {/* Invisible div at the end for scrolling */}
+        <div ref={messagesEndRef} />
       </div>
     </div>
   );
