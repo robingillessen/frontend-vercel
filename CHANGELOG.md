@@ -3,21 +3,20 @@
 ### 12-02-2025
 
 Project setup
+
 - Added Next.js 15
-- Added React 19*
+- Added React 19\*
 - Added D3
 - Added zustand for managing global client state
-- Bun for package manager / build tool / runtime**
+- Bun for package manager / build tool / runtime\*\*
 - Added tailwind for styling
 - Added eslint for linting
 
-
 \* React 19 is stable for a couple of months now.
 
-** I chose bun as the package manager / build tool / runtime because it's faster than npm and yarn and I expect less dependency issues with React 19. If we need to switch to npm or yarn, we can do it later.
+\*\* I chose bun as the package manager / build tool / runtime because it's faster than npm and yarn and I expect less dependency issues with React 19. If we need to switch to npm or yarn, we can do it later.
 
 ### 19-02-2025
-
 
 - Set up Docker environment
 - Node visualization (force-directed graph?)
@@ -32,6 +31,18 @@ Project setup
 - Added a validation text component
 - Added a textarea component that resizes based on the content
 
+### 26-02-2025
+
+- Implement chat ui
+- Added sidebar
+- Implement Source UI
+- Scroll logic in chat for multiple messages
+- Filter logic
+- Search query
+- Client state
+- Data access layer
+- Added basic animation
+- Hover states
 
 ### COMMANDS
 
@@ -45,12 +56,9 @@ Project setup
 | `bun start` | `npm run start` |
 | `bunx` | `npx` |
 
-
 ### Docker
 
 ```bash
 docker build -t wegwijs-frontend .
 docker run -p 31033:3000 wegwijs-frontend
 ```
-
-
