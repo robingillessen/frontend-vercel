@@ -29,6 +29,13 @@ export default function Home() {
       e.preventDefault(); // Prevents default newline insertion
 
       const result = schema.safeParse({ text });
+      if (!result.success) {
+        setValidationText(
+          result.error.issues[0]?.message ||
+            "Er is een validatiefout opgetreden"
+        );
+        return;
+      }
       const newMessage: Message = { role: "user", content: text };
       setMessages([...messages, newMessage]);
       setChatStarted(true);
@@ -48,12 +55,6 @@ export default function Home() {
           };
           setMessages((prev) => [...prev, assistantMessage]);
         }, 1000);
-      } else {
-        console.error("Validation error:", result.error);
-        const errorMessage =
-          result.error.issues[0]?.message ||
-          "Er is een validatiefout opgetreden";
-        setValidationText(errorMessage);
       }
     }
   };
@@ -70,12 +71,8 @@ export default function Home() {
         />
       )}
       {/* Main content area */}
-      <div
-        className={`flex flex-col transition-all duration-300 ${
-          isOpen ? "w-[70%]" : "w-full"
-        }`}
-      >
-        <div className="flex-1 flex flex-col h-fit justify-center">
+      <div className={`flex flex-col transition-all duration-300 w-full`}>
+        <div className="flex-1 flex flex-col h-fit justify-center relative">
           <MainContent
             messages={messages}
             handleNewChat={handleNewChat}
@@ -84,7 +81,7 @@ export default function Home() {
 
           <div
             className={cn(
-              "p-4 w-full flex justify-center",
+              "p-4 w-full flex justify-center transition-all duration-500",
               isOpen ? "border-t" : "border-t-0"
             )}
           >
