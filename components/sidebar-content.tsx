@@ -8,11 +8,11 @@ import {
   SidebarMenu,
 } from "@/components/ui/sidebar";
 import { SidebarSourcesSkeleton } from "@/components/skeleton-loaders/sidebar-sources-skeleton";
-import FileUpload from "./file-upload";
-import { LawArticles } from "./law-articles";
-import { Werkwijzes } from "./werkwijzes";
-import { Taxonomy } from "./taxonomy";
-import { Selectielijst } from "./selectielijst";
+import { LawArticles } from "./sources/law-articles";
+import { Werkwijzes } from "./sources/werkwijzes";
+import { Taxonomy } from "./sources/taxonomy";
+import { Selectielijst } from "./sources/selectielijst";
+import FileUpload from "./ui/file-upload";
 
 export function SidebarContent() {
   const { lawArticles, werkwijzes, taxonomyTerms, selectielijstRows, isEmpty } =

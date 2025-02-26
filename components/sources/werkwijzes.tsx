@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import { SidebarMenuItem } from "./ui/sidebar";
-import { Badge } from "./ui/badge";
+import { SidebarMenuItem } from "../ui/sidebar";
+import { Badge } from "../ui/badge";
 import { Werkwijze } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 

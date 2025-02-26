@@ -1,10 +1,10 @@
 import React from "react";
-import { TableHead, TableHeader } from "./ui/table";
-import { TableCell, TableRow } from "./ui/table";
-import { TableBody } from "./ui/table";
-import { SidebarMenuItem } from "./ui/sidebar";
-import { Table } from "./ui/table";
-import { Badge } from "./ui/badge";
+import { TableHead, TableHeader } from "../ui/table";
+import { TableCell, TableRow } from "../ui/table";
+import { TableBody } from "../ui/table";
+import { SidebarMenuItem } from "../ui/sidebar";
+import { Table } from "../ui/table";
+import { Badge } from "../ui/badge";
 import { SelectielijstRow } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 export const Selectielijst = ({
@@ -24,6 +24,8 @@ export const Selectielijst = ({
   const filteredSelectielijstRows = selectielijstRows.filter((row) =>
     row["Omschrijving"].toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  // TODO?: https://ui.shadcn.com/docs/components/data-table
 
   return (
     <>

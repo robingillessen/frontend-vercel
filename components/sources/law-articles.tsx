@@ -1,6 +1,6 @@
 import React from "react";
-import { SidebarMenuItem } from "./ui/sidebar";
-import { Badge } from "./ui/badge";
+import { SidebarMenuItem } from "../ui/sidebar";
+import { Badge } from "../ui/badge";
 import { LawArticle } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 export const LawArticles = ({ lawArticles }: { lawArticles: LawArticle[] }) => {
