@@ -12,7 +12,7 @@ export const Selectielijst = ({
 }: {
   selectielijstRows: SelectielijstRow[];
 }) => {
-  const { filter } = useSidebarStore();
+  const { filter, searchQuery } = useSidebarStore();
   const isFiltered = filter === "selectielijst_rows" || filter === "all";
   const tableHeaders =
     selectielijstRows.length > 0
@@ -20,6 +20,11 @@ export const Selectielijst = ({
           (key) => key !== "Omschrijving"
         )
       : [];
+
+  const filteredSelectielijstRows = selectielijstRows.filter((row) =>
+    row["Omschrijving"].toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       {isFiltered && (
@@ -54,7 +59,7 @@ export const Selectielijst = ({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {selectielijstRows.map((row, index) => (
+                {filteredSelectielijstRows.map((row, index) => (
                   <TableRow key={`row-${index}`} className="hover:bg-muted/50">
                     {tableHeaders.map((header) => (
                       <TableCell

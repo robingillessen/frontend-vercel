@@ -25,6 +25,8 @@ export function SourcesSidebar() {
     totalItems,
     filter,
     setFilter,
+    searchQuery,
+    setSearchQuery,
   } = useSidebarStore();
 
   // Example filter categories - replace with your actual data
@@ -59,6 +61,10 @@ export function SourcesSidebar() {
                 type="text"
                 className="w-full pl-10 pr-3 py-2 border rounded-full bg-white"
                 placeholder="Bronnen doorzoeken"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                }}
               />
             </div>
             <div className="flex items-center gap-2">

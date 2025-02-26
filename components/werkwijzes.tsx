@@ -1,16 +1,26 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { SidebarMenuItem } from "./ui/sidebar";
 import { Badge } from "./ui/badge";
 import { Werkwijze } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 
 export const Werkwijzes = ({ werkwijzes }: { werkwijzes: Werkwijze[] }) => {
-  const { filter } = useSidebarStore();
+  const searchQuery = useSidebarStore((state) => state.searchQuery);
+  const filter = useSidebarStore((state) => state.filter);
+
   const isFiltered = filter === "werkwijzes" || filter === "all";
+
+  const filteredWerkwijzes = werkwijzes.filter(
+    (w) =>
+      w.werkwijze_title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      w.text_fragment.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       {isFiltered &&
-        werkwijzes.map((werkwijze, index) => (
+        filteredWerkwijzes.map((werkwijze, index) => (
           <SidebarMenuItem
             key={`werkwijze-${index}`}
             className="mb-2 border rounded-md p-2 overflow-hidden"

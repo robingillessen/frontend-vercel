@@ -8,12 +8,17 @@ export const Taxonomy = ({
 }: {
   taxonomyTerms: TaxonomyTerm[];
 }) => {
-  const { filter } = useSidebarStore();
+  const { filter, searchQuery } = useSidebarStore();
   const isFiltered = filter === "taxonomy_terms" || filter === "all";
+
+  const filteredTaxonomyTerms = taxonomyTerms.filter((term) =>
+    term["beg-sbb:Label"].toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <>
       {isFiltered &&
-        taxonomyTerms.map((term, index) => (
+        filteredTaxonomyTerms.map((term, index) => (
           <SidebarMenuItem
             key={`term-${index}`}
             className="mb-2 border rounded-md p-2 overflow-hidden"

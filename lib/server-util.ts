@@ -6,7 +6,7 @@ import { LegalData } from "./types";
 // This is a server action that returns mock data from temp.json
 export async function getMockResponse(): Promise<LegalData> {
   // delay the response
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => setTimeout(resolve, 4000));
   try {
     return mockData as LegalData;
   } catch (error) {

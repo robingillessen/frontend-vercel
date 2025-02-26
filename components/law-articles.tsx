@@ -4,12 +4,17 @@ import { Badge } from "./ui/badge";
 import { LawArticle } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 export const LawArticles = ({ lawArticles }: { lawArticles: LawArticle[] }) => {
-  const { filter } = useSidebarStore();
+  const { filter, searchQuery } = useSidebarStore();
   const isFiltered = filter === "law_articles" || filter === "all";
+  const filteredLawArticles = lawArticles.filter(
+    (article) =>
+      article.law_article.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.text_fragment.toLowerCase().includes(searchQuery.toLowerCase())
+  );
   return (
     <>
       {isFiltered &&
-        lawArticles.map((article, index) => (
+        filteredLawArticles.map((article, index) => (
           <SidebarMenuItem
             key={`law-${index}`}
             className="mb-2 border rounded-md p-2 overflow-hidden"

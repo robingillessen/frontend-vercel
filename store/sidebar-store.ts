@@ -13,6 +13,7 @@ interface SidebarState {
   legalData: LegalData | null;
   // create a filter property for the source. type is one of keys of the legalData object
   filter: keyof LegalData | "all";
+  searchQuery: string;
 
   // Helper properties for quickly accessing specific source types
   lawArticles: LawArticle[];
@@ -31,7 +32,7 @@ interface SidebarState {
   openSidebar: () => void;
   closeSidebar: () => void;
   toggleSidebar: () => void;
-
+  setSearchQuery: (query: string) => void;
   // Data actions
   setLegalData: (data: LegalData) => void;
   clearLegalData: () => void;
@@ -41,6 +42,7 @@ interface SidebarState {
 export const useSidebarStore = create<SidebarState>((set) => ({
   isOpen: false,
   filter: "all",
+  searchQuery: "",
   // Initialize typed sources
   legalData: null,
   lawArticles: [],
@@ -54,6 +56,7 @@ export const useSidebarStore = create<SidebarState>((set) => ({
 
   // UI actions
   setFilter: (filter: keyof LegalData | "all") => set({ filter }),
+  setSearchQuery: (query: string) => set({ searchQuery: query }),
   openSidebar: () => set({ isOpen: true }),
   closeSidebar: () => set({ isOpen: false }),
   toggleSidebar: () => set((state) => ({ isOpen: !state.isOpen })),
