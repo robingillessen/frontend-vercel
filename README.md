@@ -2,7 +2,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Install pnpm using `curl -fsSL https://get.pnpm.io/install.sh | sh -`
+
+Then run `pnpm install` to install the packages, resulting in a `node_modules/` directory.
+
+Then, run the development server:
 
 ```bash
 npm run dev
