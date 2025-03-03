@@ -27,7 +27,7 @@ export const LawArticles = ({ lawArticles }: { lawArticles: LawArticle[] }) => {
                 WET
               </Badge>
               <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{`Wet open overheid Artikel ${article.law_article}`}</div>
+                <div className="font-medium truncate">{`${article.law_article}`}</div>
                 <div className="text-sm text-muted-foreground line-clamp-2">
                   {article.text_fragment}
                 </div>

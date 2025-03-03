@@ -30,10 +30,10 @@ export const Werkwijzes = ({ werkwijzes }: { werkwijzes: Werkwijze[] }) => {
                 variant="outline"
                 className="bg-purple-100 text-purple-800 rounded-md px-2 py-1 text-xs flex items-center shrink-0"
               >
-                WERKWIJZES
+                WERKWIJZERS
               </Badge>
               <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{`Wet open overheid Artikel ${werkwijze.werkwijze_title}`}</div>
+                <div className="font-medium truncate">{`${werkwijze.werkwijze_title}`}</div>
                 <div className="text-sm text-muted-foreground line-clamp-2">
                   {werkwijze.text_fragment}
                 </div>

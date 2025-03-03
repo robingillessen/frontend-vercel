@@ -17,8 +17,8 @@ export const Selectielijst = ({
   const tableHeaders =
     selectielijstRows.length > 0
       ? Object.keys(selectielijstRows[0]).filter(
-          (key) => key !== "Omschrijving"
-        )
+        (key) => key !== "Omschrijving"
+      )
       : [];
 
   const filteredSelectielijstRows = selectielijstRows.filter((row) =>
@@ -39,10 +39,10 @@ export const Selectielijst = ({
               variant="outline"
               className="bg-blue-100 text-blue-800 rounded-md px-2 py-1 text-xs flex items-center shrink-0"
             >
-              JURISPRUDENTIE
+              SELECTIELIJST
             </Badge>
             <div className="flex-1 min-w-0">
-              <div className="font-medium truncate">Selectielijst items</div>
+              <div className="font-medium truncate">Selectielijst Waterschappen 2012</div>
             </div>
             <span className="text-muted-foreground mr-2 shrink-0">
               {selectielijstRows.length}

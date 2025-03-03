@@ -32,7 +32,7 @@ export function SourcesSidebar() {
   const filters = [
     { id: "all", name: "Alles", count: totalItems },
     { id: "law_articles", name: "Wetten", count: lawArticles.length },
-    { id: "werkwijzes", name: "Werkwijzes", count: werkwijzes.length },
+    { id: "werkwijzes", name: "Werkwijzers", count: werkwijzes.length },
     { id: "taxonomy_terms", name: "Taxonomie", count: taxonomyTerms.length },
     {
       id: "selectielijst_rows",
