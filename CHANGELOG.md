@@ -53,7 +53,7 @@ Project setup
 | --- | --- |
 | `bun add` | `npm install` |
 | `bun build` | `npm run build` |
-| `bun start` | `npm run start` |
+| `bun dev` | `npm run dev` |
 | `bunx` | `npx` |
 
 ### Docker
