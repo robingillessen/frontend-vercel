@@ -1,15 +1,17 @@
 import React from "react";
 import { SidebarMenuItem } from "../ui/sidebar";
 import { Badge } from "../ui/badge";
-import { LawArticle } from "@/lib/types";
+import { LawSource, SourceType } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
-export const LawArticles = ({ lawArticles }: { lawArticles: LawArticle[] }) => {
+import { SourceBadgeText } from "../source-badge-text";
+export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
+  console.log("lawArticles", lawArticles);
   const { filter, searchQuery } = useSidebarStore();
-  const isFiltered = filter === "law_articles" || filter === "all";
+  const isFiltered = filter === "law" || filter === "all";
   const filteredLawArticles = lawArticles.filter(
     (article) =>
-      article.law_article.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.text_fragment.toLowerCase().includes(searchQuery.toLowerCase())
+      article.value.law.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      article.value.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
   return (
     <>
@@ -20,19 +22,23 @@ export const LawArticles = ({ lawArticles }: { lawArticles: LawArticle[] }) => {
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
-              <Badge
-                variant="outline"
-                className="bg-green-100 text-green-800 rounded-md px-2 py-1 text-xs flex items-center shrink-0"
-              >
-                WET
-              </Badge>
+              <SourceBadgeText sourceType={SourceType.LAW} />
               <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{`${article.law_article}`}</div>
+                <div className="font-medium truncate">{article.value.law}</div>
                 <div className="text-sm text-muted-foreground line-clamp-2">
-                  {article.text_fragment}
+                  {article.value.title}
                 </div>
               </div>
-              <span className="text-muted-foreground mr-2 shrink-0">2</span>
+              {article.value.url && (
+                <a
+                  href={article.value.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground mr-2 shrink-0"
+                >
+                  Link
+                </a>
+              )}
             </div>
           </SidebarMenuItem>
         ))}

@@ -15,14 +15,6 @@ const handleNewChat = () => {
   window.location.reload();
 };
 
-const getAnswerMarkdown = (mockResponse: LegalData) => {
-  const paragraphs = mockResponse.answer.text.map(
-    (paragraph) => paragraph.paragraph
-  );
-  console.log(paragraphs);
-  return paragraphs.join("\n\n\n");
-};
-
 export default function Home() {
   const [text, setText] = useState("");
   const [validationText, setValidationText] = useState("");
@@ -55,12 +47,11 @@ export default function Home() {
         setValidationText("");
 
         setLegalData(mockResponse);
-        const answerMarkdown = getAnswerMarkdown(mockResponse);
 
         setTimeout(() => {
           const assistantMessage: Message = {
             role: "assistant",
-            content: answerMarkdown,
+            content: mockResponse.answer.text,
           };
           setMessages((prev) => [...prev, assistantMessage]);
         }, 1000);

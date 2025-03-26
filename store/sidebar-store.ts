@@ -1,27 +1,25 @@
 import { create } from "zustand";
 import {
   LegalData,
-  LawArticle,
-  Werkwijze,
-  TaxonomyTerm,
-  SelectielijstRow,
-  Subgraph,
+  LawSource,
+  CaseLawSource,
+  TaxonomySource,
+  SelectielijstSource,
+  Source,
+  SourceType,
 } from "@/lib/types";
 
 interface SidebarState {
   isOpen: boolean;
   legalData: LegalData | null;
-  // create a filter property for the source. type is one of keys of the legalData object
-  filter: keyof LegalData | "all";
+  filter: SourceType | "all";
   searchQuery: string;
 
   // Helper properties for quickly accessing specific source types
-  lawArticles: LawArticle[];
-  werkwijzes: Werkwijze[];
-  taxonomyTerms: TaxonomyTerm[];
-  selectielijstRows: SelectielijstRow[];
-  lidoSubgraph: Subgraph | null;
-  jasSubgraph: Subgraph | null;
+  lawArticles: LawSource[];
+  caseLawSources: CaseLawSource[];
+  taxonomySources: TaxonomySource[];
+  selectielijstSources: SelectielijstSource[];
 
   // Added isEmpty property
   isEmpty: boolean;
@@ -36,7 +34,7 @@ interface SidebarState {
   // Data actions
   setLegalData: (data: LegalData) => void;
   clearLegalData: () => void;
-  setFilter: (filter: keyof LegalData | "all") => void;
+  setFilter: (filter: SourceType | "all") => void;
 }
 
 export const useSidebarStore = create<SidebarState>((set) => ({
@@ -46,16 +44,14 @@ export const useSidebarStore = create<SidebarState>((set) => ({
   // Initialize typed sources
   legalData: null,
   lawArticles: [],
-  werkwijzes: [],
-  taxonomyTerms: [],
-  selectielijstRows: [],
-  lidoSubgraph: null,
-  jasSubgraph: null,
+  caseLawSources: [],
+  taxonomySources: [],
+  selectielijstSources: [],
   isEmpty: true,
   totalItems: 0,
 
   // UI actions
-  setFilter: (filter: keyof LegalData | "all") => set({ filter }),
+  setFilter: (filter: SourceType | "all") => set({ filter }),
   setSearchQuery: (query: string) => set({ searchQuery: query }),
   openSidebar: () => set({ isOpen: true }),
   closeSidebar: () => set({ isOpen: false }),
@@ -63,30 +59,39 @@ export const useSidebarStore = create<SidebarState>((set) => ({
 
   // Data actions
   setLegalData: (data: LegalData) => {
-    const lawArticles = data.law_articles || [];
-    const werkwijzes = data.werkwijzes || [];
-    const taxonomyTerms = data.taxonomy_terms || [];
-    const selectielijstRows = data.selectielijst_rows || [];
+    console.log("data", data);
+    // Eerst checken we of data.sources bestaat
+    const sources = data?.answer.sources || [];
 
-    const totalItems =
-      lawArticles.length +
-      werkwijzes.length +
-      taxonomyTerms.length +
-      selectielijstRows.length;
+    const lawArticles = sources.filter(
+      (source): source is LawSource => source.type === SourceType.LAW
+    );
+    console.log("lawArticles", lawArticles);
+    const caseLawSources = sources.filter(
+      (source): source is CaseLawSource => source.type === SourceType.CASE_LAW
+    );
 
+    const taxonomySources = sources.filter(
+      (source): source is TaxonomySource => source.type === SourceType.TAXONOMY
+    );
+
+    const selectielijstSources = sources.filter(
+      (source): source is SelectielijstSource =>
+        source.type === SourceType.SELECTIELIJST
+    );
+
+    const totalItems = sources.length; // Direct gebruik maken van sources array lengte
     const isEmpty = totalItems === 0;
 
     set({
       legalData: data,
       lawArticles,
-      werkwijzes,
-      taxonomyTerms,
-      selectielijstRows,
-      lidoSubgraph: data.lido_subgraph || null,
-      jasSubgraph: data.jas_subgraph || null,
+      caseLawSources,
+      taxonomySources,
+      selectielijstSources,
       isEmpty,
       totalItems,
-      isOpen: true, // Auto-open sidebar when data is loaded
+      isOpen: true,
     });
   },
 
@@ -94,11 +99,9 @@ export const useSidebarStore = create<SidebarState>((set) => ({
     set({
       legalData: null,
       lawArticles: [],
-      werkwijzes: [],
-      taxonomyTerms: [],
-      selectielijstRows: [],
-      lidoSubgraph: null,
-      jasSubgraph: null,
+      caseLawSources: [],
+      taxonomySources: [],
+      selectielijstSources: [],
       isEmpty: true, // Reset to true when clearing data
       totalItems: 0, // Reset total count to 0
     }),

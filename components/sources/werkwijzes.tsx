@@ -4,6 +4,8 @@ import { SidebarMenuItem } from "../ui/sidebar";
 import { Badge } from "../ui/badge";
 import { Werkwijze } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
+import { SourceBadgeText } from "../source-badge-text";
+import { SourceType } from "@/lib/types";
 
 export const Werkwijzes = ({ werkwijzes }: { werkwijzes: Werkwijze[] }) => {
   const searchQuery = useSidebarStore((state) => state.searchQuery);
@@ -26,12 +28,7 @@ export const Werkwijzes = ({ werkwijzes }: { werkwijzes: Werkwijze[] }) => {
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
-              <Badge
-                variant="outline"
-                className="bg-purple-100 text-purple-800 rounded-md px-2 py-1 text-xs flex items-center shrink-0"
-              >
-                WERKWIJZERS
-              </Badge>
+              <SourceBadgeText sourceType={SourceType.LAW} />
               <div className="flex-1 min-w-0">
                 <div className="font-medium truncate">{`${werkwijze.werkwijze_title}`}</div>
                 <div className="text-sm text-muted-foreground line-clamp-2">

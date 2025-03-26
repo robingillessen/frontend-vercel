@@ -15,8 +15,13 @@ import { Selectielijst } from "./sources/selectielijst";
 import FileUpload from "./ui/file-upload";
 
 export function SidebarContent() {
-  const { lawArticles, werkwijzes, taxonomyTerms, selectielijstRows, isEmpty } =
-    useSidebarStore();
+  const {
+    lawArticles,
+    caseLawSources,
+    taxonomySources,
+    selectielijstSources,
+    isEmpty,
+  } = useSidebarStore();
 
   return (
     <SidebarGroup>
@@ -31,9 +36,9 @@ export function SidebarContent() {
           ) : (
             <>
               <LawArticles lawArticles={lawArticles} />
-              <Werkwijzes werkwijzes={werkwijzes} />
-              <Taxonomy taxonomyTerms={taxonomyTerms} />
-              <Selectielijst selectielijstRows={selectielijstRows} />
+              {/* <Werkwijzes werkwijzes={werkwijzes} /> */}
+              <Taxonomy taxonomyTerms={taxonomySources} />
+              <Selectielijst selectielijstRows={selectielijstSources} />
             </>
           )}
         </SidebarMenu>

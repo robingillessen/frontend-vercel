@@ -12,15 +12,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { TFilter } from "@/lib/types";
+import { SourceType } from "@/lib/types";
 
 export function SourcesSidebar() {
   const {
     isOpen,
-    taxonomyTerms,
+    taxonomySources,
     lawArticles,
-    werkwijzes,
-    selectielijstRows,
+    caseLawSources,
+    selectielijstSources,
     totalItems,
     filter,
     setFilter,
@@ -28,23 +28,30 @@ export function SourcesSidebar() {
     setSearchQuery,
   } = useSidebarStore();
 
-  // Example filter categories - replace with your actual data
   const filters = [
     { id: "all", name: "Alles", count: totalItems },
-    { id: "law_articles", name: "Wetten", count: lawArticles.length },
-    { id: "werkwijzes", name: "Werkwijzers", count: werkwijzes.length },
-    { id: "taxonomy_terms", name: "Taxonomie", count: taxonomyTerms.length },
+    { id: SourceType.LAW, name: "Wetten", count: lawArticles.length },
     {
-      id: "selectielijst_rows",
+      id: SourceType.CASE_LAW,
+      name: "Jurisprudentie",
+      count: caseLawSources.length,
+    },
+    {
+      id: SourceType.TAXONOMY,
+      name: "Taxonomie",
+      count: taxonomySources.length,
+    },
+    {
+      id: SourceType.SELECTIELIJST,
       name: "Selectielijst",
-      count: selectielijstRows.length,
+      count: selectielijstSources.length,
     },
   ];
 
   return (
     <div
       className={cn(
-        "bg-gray-100 shadow-lg transition-all duration-300 ease-in-out border-l h-full",
+        "bg-gray-100 shadow-lg transition-all duration-300 ease-in-out border-l h-full overflow-y-auto",
         isOpen ? "w-[30%]" : "w-0 opacity-0 overflow-hidden"
       )}
     >
@@ -89,7 +96,9 @@ export function SourcesSidebar() {
                 key={f.id}
                 variant="outline"
                 size="sm"
-                onClick={() => setFilter(f.id as TFilter)}
+                onClick={() =>
+                  setFilter(f.id === "all" ? "all" : (f.id as SourceType))
+                }
                 className={cn(
                   "text-xs rounded-full border-2",
                   filter === f.id && "border-lichtblauw"

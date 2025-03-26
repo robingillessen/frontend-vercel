@@ -5,79 +5,53 @@ import { TableBody } from "../ui/table";
 import { SidebarMenuItem } from "../ui/sidebar";
 import { Table } from "../ui/table";
 import { Badge } from "../ui/badge";
-import { SelectielijstRow } from "@/lib/types";
+import { SelectielijstSource, SourceType } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
+import { SourceBadgeText } from "../source-badge-text";
+
 export const Selectielijst = ({
   selectielijstRows,
 }: {
-  selectielijstRows: SelectielijstRow[];
+  selectielijstRows: SelectielijstSource[];
 }) => {
   const { filter, searchQuery } = useSidebarStore();
-  const isFiltered = filter === "selectielijst_rows" || filter === "all";
-  const tableHeaders =
-    selectielijstRows.length > 0
-      ? Object.keys(selectielijstRows[0]).filter(
-        (key) => key !== "Omschrijving"
-      )
-      : [];
+  const isFiltered = filter === "selectielijst" || filter === "all";
 
   const filteredSelectielijstRows = selectielijstRows.filter((row) =>
-    row["Omschrijving"].toLowerCase().includes(searchQuery.toLowerCase())
+    row.value?.title?.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  // TODO?: https://ui.shadcn.com/docs/components/data-table
 
   return (
     <>
-      {isFiltered && (
-        <SidebarMenuItem
-          key="selectielijst"
-          className="mb-2 border rounded-md p-2 overflow-hidden"
-        >
-          <div className="flex items-start gap-2 w-full mb-2">
-            <Badge
-              variant="outline"
-              className="bg-blue-100 text-blue-800 rounded-md px-2 py-1 text-xs flex items-center shrink-0"
-            >
-              SELECTIELIJST
-            </Badge>
-            <div className="flex-1 min-w-0">
-              <div className="font-medium truncate">Selectielijst Waterschappen 2012</div>
+      {isFiltered &&
+        filteredSelectielijstRows.map((item, index) => (
+          <SidebarMenuItem
+            key={`selectielijst-${index}`}
+            className="mb-2 border rounded-md p-2 overflow-hidden"
+          >
+            <div className="flex items-start gap-2 w-full">
+              <SourceBadgeText sourceType={SourceType.SELECTIELIJST} />
+              <div className="flex-1 min-w-0">
+                <div className="font-medium truncate">{item.value.title}</div>
+                {item.value.document && (
+                  <div className="text-sm text-muted-foreground line-clamp-2">
+                    {item.value.document}
+                  </div>
+                )}
+              </div>
+              {item.value.url && (
+                <a
+                  href={item.value.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground mr-2 shrink-0"
+                >
+                  Link
+                </a>
+              )}
             </div>
-            <span className="text-muted-foreground mr-2 shrink-0">
-              {selectielijstRows.length}
-            </span>
-          </div>
-
-          <div className="mt-2 max-h-[300px] overflow-auto border rounded-md">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  {tableHeaders.map((header) => (
-                    <TableHead key={header} className="text-xs font-medium">
-                      {header}
-                    </TableHead>
-                  ))}
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredSelectielijstRows.map((row, index) => (
-                  <TableRow key={`row-${index}`} className="hover:bg-muted/50">
-                    {tableHeaders.map((header) => (
-                      <TableCell
-                        key={`${index}-${header}`}
-                        className="py-2 text-sm"
-                      >
-                        {row[header as keyof typeof row]}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </SidebarMenuItem>
-      )}
+          </SidebarMenuItem>
+        ))}
     </>
   );
 };
