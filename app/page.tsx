@@ -5,7 +5,7 @@ import { SourcesSidebar } from "@/components/sources-sidebar";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { cn } from "@/lib/utils";
 import { schema } from "@/lib/schemes";
-import { Message } from "@/lib/types";
+import { Message, LegalData } from "@/lib/types";
 import { MainContent } from "@/components/main-content";
 import { Disclaimer } from "@/components/disclaimer";
 import { ChatInput } from "@/components/chat-input";
@@ -13,6 +13,14 @@ import { getMockResponse } from "@/lib/server-util";
 
 const handleNewChat = () => {
   window.location.reload();
+};
+
+const getAnswerMarkdown = (mockResponse: LegalData) => {
+  const paragraphs = mockResponse.answer.text.map(
+    (paragraph) => paragraph.paragraph
+  );
+  console.log(paragraphs);
+  return paragraphs.join("\n\n\n");
 };
 
 export default function Home() {
@@ -45,13 +53,14 @@ export default function Home() {
       if (result.success) {
         setText("");
         setValidationText("");
+
         setLegalData(mockResponse);
-        // Here you would normally call an API to get a response
-        // For now, let's simulate a response after a delay
+        const answerMarkdown = getAnswerMarkdown(mockResponse);
+
         setTimeout(() => {
           const assistantMessage: Message = {
             role: "assistant",
-            content: mockResponse.answer,
+            content: answerMarkdown,
           };
           setMessages((prev) => [...prev, assistantMessage]);
         }, 1000);
@@ -94,7 +103,7 @@ export default function Home() {
             />
           </div>
         </div>
-        <Disclaimer />
+        {!isOpen && <Disclaimer />}
       </div>
       <SourcesSidebar />
     </div>

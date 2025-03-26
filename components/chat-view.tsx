@@ -2,7 +2,8 @@ import React, { useRef, useEffect } from "react";
 import { Button } from "./ui/button";
 import { SquarePen } from "lucide-react";
 import { Message } from "@/lib/types";
-
+import { LoadingAnimation } from "./loading-animation";
+import { MarkdownRenderer } from "./markdown-renderer";
 interface ChatViewProps {
   messages: Message[];
   handleNewChat: () => void;
@@ -43,31 +44,12 @@ export const ChatView = ({ messages, handleNewChat }: ChatViewProps) => {
                 : "bg-white text-black mr-auto max-w-[80%]"
             }`}
           >
-            {message.content}
+            <MarkdownRenderer content={message.content} />
           </div>
         ))}
 
         {/* Show loading message if waiting for a response */}
-        {isWaitingForResponse && (
-          <div className="mb-4 p-3 rounded-lg bg-white text-black mr-auto max-w-[80%]">
-            <div className="flex items-center">
-              <div className="ml-2 flex space-x-1">
-                <div
-                  className="h-2 w-2 rounded-full bg-lintblauw animate-bounce"
-                  style={{ animationDelay: "0ms" }}
-                ></div>
-                <div
-                  className="h-2 w-2 rounded-full bg-lintblauw animate-bounce"
-                  style={{ animationDelay: "150ms" }}
-                ></div>
-                <div
-                  className="h-2 w-2 rounded-full bg-lintblauw animate-bounce"
-                  style={{ animationDelay: "300ms" }}
-                ></div>
-              </div>
-            </div>
-          </div>
-        )}
+        {isWaitingForResponse && <LoadingAnimation />}
 
         {/* Invisible div at the end for scrolling */}
         <div ref={messagesEndRef} />

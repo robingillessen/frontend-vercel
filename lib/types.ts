@@ -3,75 +3,49 @@ export interface Message {
   content: string;
 }
 
-// Law article interface
-export interface LawArticle {
-  law_title: string;
-  law_article: string;
-  url: string;
-  text_fragment: string;
-  date: string;
-  URI: string;
-}
-
-// Werkwijze interface
-export interface Werkwijze {
-  werkwijze_title: string;
-  url: string;
-  text_fragment: string;
-  date: string;
-  URI: string;
-}
-
-// Taxonomy context interface
-export interface TaxonomyContext {
-  "beg-sbb:Definition": string;
-  "beg-sbb:Source": string;
-  "wir:naderToegelicht": string[];
-}
-
-// Taxonomy term interface
-export interface TaxonomyTerm {
-  "beg-sbb:Label": string;
-  "wir:context": TaxonomyContext[];
-}
-
-// Selectielijst row interface
-export interface SelectielijstRow {
-  Proces: string;
-  Onderwerp: string;
-  Omschrijving: string;
-  Bewaartermijn: string;
-  Voorbeeldstukken: string;
-}
-
-// Graph node interface
-export interface GraphNode {
+// Source interface
+export interface Source {
   id: string;
-  label: string;
+  type: string;
+  value: {
+    isSource?: boolean;
+    document?: string;
+    title?: string;
+    law?: string;
+    url?: string;
+    lido?: Record<string, unknown>;
+    name?: string;
+    rows?: any[];
+    // For taxonomy type
+    label?: string;
+    context?: Array<{
+      id: string;
+      isSource: boolean;
+      source: string;
+      definition: string;
+      naderToegelicht: string[];
+      wetcontext: {
+        url: string;
+      };
+    }>;
+  };
 }
 
-// Graph link interface
-export interface GraphLink {
-  source: string;
-  target: string;
-  label: string;
+// Text paragraph interface
+export interface TextParagraph {
+  paragraph: string;
+  sources: string[];
 }
 
-// Subgraph interface
-export interface Subgraph {
-  nodes: GraphNode[];
-  links: GraphLink[];
+// Answer interface
+export interface Answer {
+  text: TextParagraph[];
+  sources: Source[];
 }
 
 // Root data interface
 export interface LegalData {
-  answer: string;
-  law_articles: LawArticle[];
-  werkwijzes: Werkwijze[];
-  taxonomy_terms: TaxonomyTerm[];
-  selectielijst_rows: SelectielijstRow[];
-  lido_subgraph: Subgraph;
-  jas_subgraph: Subgraph;
+  answer: Answer;
 }
 
 export type TFilter = keyof LegalData | "all";

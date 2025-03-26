@@ -1,6 +1,6 @@
 "use server";
 
-import mockData from "../temp.json";
+import mockData from "../data.json";
 import { LegalData } from "./types";
 
 // This is a server action that returns mock data from temp.json

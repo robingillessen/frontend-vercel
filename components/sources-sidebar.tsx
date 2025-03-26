@@ -49,7 +49,7 @@ export function SourcesSidebar() {
       )}
     >
       <div className="flex flex-col h-full">
-        <div className="border-b p-4">
+        <div className="border-b p-4 pt-10">
           <h2 className="text-xl font-semibold mb-4">Bronnen</h2>
 
           {/* Search bar */}
