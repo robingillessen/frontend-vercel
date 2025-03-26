@@ -64,20 +64,30 @@ export const useSidebarStore = create<SidebarState>((set) => ({
     const sources = data?.answer.sources || [];
 
     const lawArticles = sources.filter(
-      (source): source is LawSource => source.type === SourceType.LAW
+      (source): source is LawSource =>
+        source.type === SourceType.LAW && source.value.isSource
     );
     console.log("lawArticles", lawArticles);
     const caseLawSources = sources.filter(
-      (source): source is CaseLawSource => source.type === SourceType.CASE_LAW
+      (source): source is CaseLawSource =>
+        source.type === SourceType.CASE_LAW && source.value.isSource
     );
 
     const taxonomySources = sources.filter(
-      (source): source is TaxonomySource => source.type === SourceType.TAXONOMY
+      (source): source is TaxonomySource => {
+        if (source.type !== SourceType.TAXONOMY) return false;
+        // Filter alleen de context items met isSource: true
+        source.value.context = source.value.context.filter(
+          (context) => context.isSource
+        );
+        // Alleen bronnen behouden die nog context items over hebben
+        return source.value.context.length > 0;
+      }
     );
 
     const selectielijstSources = sources.filter(
       (source): source is SelectielijstSource =>
-        source.type === SourceType.SELECTIELIJST
+        source.type === SourceType.SELECTIELIJST && source.value.isSource
     );
 
     const totalItems = sources.length; // Direct gebruik maken van sources array lengte

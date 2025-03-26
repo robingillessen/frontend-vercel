@@ -14,7 +14,6 @@ export enum SourceType {
 interface BaseSource {
   id?: string;
   type: SourceType;
-  isSource: boolean;
 }
 
 interface ISelectielijst {
