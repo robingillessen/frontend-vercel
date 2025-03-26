@@ -5,7 +5,6 @@ import {
   CaseLawSource,
   TaxonomySource,
   SelectielijstSource,
-  Source,
   SourceType,
 } from "@/lib/types";
 
@@ -59,7 +58,6 @@ export const useSidebarStore = create<SidebarState>((set) => ({
 
   // Data actions
   setLegalData: (data: LegalData) => {
-    console.log("data", data);
     // Eerst checken we of data.sources bestaat
     const sources = data?.answer.sources || [];
 
@@ -67,7 +65,6 @@ export const useSidebarStore = create<SidebarState>((set) => ({
       (source): source is LawSource =>
         source.type === SourceType.LAW && source.value.isSource
     );
-    console.log("lawArticles", lawArticles);
     const caseLawSources = sources.filter(
       (source): source is CaseLawSource =>
         source.type === SourceType.CASE_LAW && source.value.isSource

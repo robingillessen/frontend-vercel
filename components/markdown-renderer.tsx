@@ -14,7 +14,6 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     console.log(`Opening source: ${sourceId}`);
     // TODO: Implementeer source opening logica
   };
-  console.log(content);
   if (Array.isArray(content)) {
     return (
       <div className="markdown-content prose prose-neutral max-w-none">
@@ -63,8 +62,6 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     /([^<]+)<source_(\d+)>/g,
     (_, word, sourceId) => `[${word}](#source_${sourceId})`
   );
-
-  console.log("Processed content:", processedContent);
 
   return (
     <div className="markdown-content prose prose-neutral max-w-none">

@@ -5,7 +5,6 @@ import { LawSource, SourceType } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
 export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
-  console.log("lawArticles", lawArticles);
   const { filter, searchQuery } = useSidebarStore();
   const isFiltered = filter === "law" || filter === "all";
   const filteredLawArticles = lawArticles.filter(
