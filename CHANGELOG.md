@@ -44,17 +44,26 @@ Project setup
 - Added basic animation
 - Hover states
 
+### 26-03-2025
+
+- Refactor to new JSON (data)
+- Implemented badges for the sources
+- Created markdown displayer
+- Styled the markdown displayer
+- More refactoring to match the new design
+
 ### COMMANDS
 
 ### Bun
 
 | Bun Command | npm Command |
 
-| --- | --- |
-| `bun add` | `npm install` |
+| Bun Command | npm Command     |
+| ----------- | --------------- |
+| `bun add`   | `npm install`   |
 | `bun build` | `npm run build` |
-| `bun dev` | `npm run dev` |
-| `bunx` | `npx` |
+| `bun dev`   | `npm run dev`   |
+| `bunx`      | `npx`           |
 
 ### Docker
 
