@@ -8,14 +8,14 @@ import { Badge } from "../ui/badge";
 import { SelectielijstSource, SourceType } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
-
+import { ParagraphSource } from "../paragraph-sources";
 export const Selectielijst = ({
   selectielijstRows,
 }: {
   selectielijstRows: SelectielijstSource[];
 }) => {
   const { filter, searchQuery } = useSidebarStore();
-  const isFiltered = filter === "selectielijst" || filter === "all";
+  const isFiltered = filter === SourceType.SELECTIELIJST || filter === "all";
 
   const filteredSelectielijstRows = selectielijstRows.filter((row) =>
     row.value?.title?.toLowerCase().includes(searchQuery.toLowerCase())
@@ -30,6 +30,7 @@ export const Selectielijst = ({
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
+              <ParagraphSource id={item.id} />
               <SourceBadgeText sourceType={SourceType.SELECTIELIJST} />
               <div className="flex-1 min-w-0">
                 <div className="font-medium truncate">{item.value.title}</div>

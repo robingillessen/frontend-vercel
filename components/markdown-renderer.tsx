@@ -1,7 +1,7 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { TextParagraph } from "@/lib/types";
-import { ParagraphSources } from "./paragraph-sources";
+import { ParagraphSource } from "./paragraph-sources";
 
 interface MarkdownRendererProps {
   content: TextParagraph[] | string;
@@ -11,7 +11,6 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
   content,
 }) => {
   const handleSourceClick = (sourceId: string) => {
-    console.log(`Opening source: ${sourceId}`);
     // TODO: Implementeer source opening logica
   };
   if (Array.isArray(content)) {
@@ -47,7 +46,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
               </ReactMarkdown>
               <div className="flex gap-2 mt-2">
                 {Array.from(item.sources).map((sourceId) => (
-                  <ParagraphSources key={sourceId} id={sourceId} />
+                  <ParagraphSource key={sourceId} id={sourceId} />
                 ))}
               </div>
             </div>

@@ -4,13 +4,13 @@ import { useSidebarStore } from "@/store/sidebar-store";
 import { getTailwindClasses } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-export const ParagraphSources = ({ id }: { id: string }) => {
+export const ParagraphSource = ({ id }: { id?: string }) => {
   const { legalData } = useSidebarStore();
+
+  if (!id) return null;
+
   const source = legalData?.answer.sources.find((source) => source.id === id);
-
   if (!source) return null;
-
-  // TODO: decide background color based on source type
 
   return (
     <div className="">
@@ -21,7 +21,7 @@ export const ParagraphSources = ({ id }: { id: string }) => {
         )}
         key={id}
       >
-        {id.split("_")[1]}
+        {id?.split("_")[1]}
       </div>
     </div>
   );

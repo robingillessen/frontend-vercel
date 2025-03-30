@@ -51,6 +51,14 @@ Project setup
 - Created markdown displayer
 - Styled the markdown displayer
 - More refactoring to match the new design
+- Marked text for the taxonomy
+
+Up next
+
+- Sidebar content aanpassen naar design
+- Selectielijsten integreren in de sidebar
+- Source detail scherm maken in de sidebar
+- Corresponderende hover styling
 
 ### COMMANDS
 

@@ -11,6 +11,14 @@ export enum SourceType {
   SELECTIELIJST = "selectielijst",
 }
 
+export enum SourceTypeLabel {
+  LAW = "Wet",
+  CASE_LAW = "Jurisprudentie",
+  TAXONOMY = "Definitie",
+  WERKINSTRUCTIE = "Werkinstructie",
+  SELECTIELIJST = "Selectielijst",
+}
+
 interface BaseSource {
   id?: string;
   type: SourceType;
@@ -91,7 +99,8 @@ export type Source =
   | LawSource
   | CaseLawSource
   | TaxonomySource
-  | SelectielijstSource;
+  | SelectielijstSource
+  | WerkinstructieSource;
 
 // Text paragraph interface
 export interface TextParagraph {

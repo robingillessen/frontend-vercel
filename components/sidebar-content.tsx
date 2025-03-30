@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/sidebar";
 import { SidebarSourcesSkeleton } from "@/components/skeleton-loaders/sidebar-sources-skeleton";
 import { LawArticles } from "./sources/law-articles";
-import { Werkwijzes } from "./sources/werkwijzes";
+import { Werkwijzes } from "./sources/werkinstructie";
 import { Taxonomy } from "./sources/taxonomy";
 import { Selectielijst } from "./sources/selectielijst";
+import { CaseLaw } from "./sources/case-law";
 import FileUpload from "./ui/file-upload";
 
 export function SidebarContent() {
@@ -36,6 +37,7 @@ export function SidebarContent() {
           ) : (
             <>
               <LawArticles lawArticles={lawArticles} />
+              <CaseLaw caseLawSources={caseLawSources} />
               {/* <Werkwijzes werkwijzes={werkwijzes} /> */}
               <Taxonomy taxonomyTerms={taxonomySources} />
               <Selectielijst selectielijstRows={selectielijstSources} />

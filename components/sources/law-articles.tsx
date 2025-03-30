@@ -1,17 +1,19 @@
 import React from "react";
 import { SidebarMenuItem } from "../ui/sidebar";
-import { Badge } from "../ui/badge";
 import { LawSource, SourceType } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
+import { ParagraphSource } from "../paragraph-sources";
+
 export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
   const { filter, searchQuery } = useSidebarStore();
-  const isFiltered = filter === "law" || filter === "all";
+  const isFiltered = filter === SourceType.LAW || filter === "all";
   const filteredLawArticles = lawArticles.filter(
     (article) =>
       article.value.law.toLowerCase().includes(searchQuery.toLowerCase()) ||
       article.value.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
   return (
     <>
       {isFiltered &&
@@ -21,6 +23,7 @@ export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
+              <ParagraphSource id={article.id} />
               <SourceBadgeText sourceType={SourceType.LAW} />
               <div className="flex-1 min-w-0">
                 <div className="font-medium truncate">{article.value.law}</div>

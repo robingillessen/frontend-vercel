@@ -6,6 +6,7 @@ import {
   TaxonomySource,
   SelectielijstSource,
   SourceType,
+  WerkinstructieSource,
 } from "@/lib/types";
 
 interface SidebarState {
@@ -19,6 +20,7 @@ interface SidebarState {
   caseLawSources: CaseLawSource[];
   taxonomySources: TaxonomySource[];
   selectielijstSources: SelectielijstSource[];
+  werkinstructieSources: WerkinstructieSource[];
 
   // Added isEmpty property
   isEmpty: boolean;
@@ -46,6 +48,7 @@ export const useSidebarStore = create<SidebarState>((set) => ({
   caseLawSources: [],
   taxonomySources: [],
   selectielijstSources: [],
+  werkinstructieSources: [],
   isEmpty: true,
   totalItems: 0,
 
@@ -58,17 +61,17 @@ export const useSidebarStore = create<SidebarState>((set) => ({
 
   // Data actions
   setLegalData: (data: LegalData) => {
-    // Eerst checken we of data.sources bestaat
     const sources = data?.answer.sources || [];
 
     const lawArticles = sources.filter(
-      (source): source is LawSource =>
-        source.type === SourceType.LAW && source.value.isSource
+      (source): source is LawSource => source.type === SourceType.LAW
     );
-    const caseLawSources = sources.filter(
-      (source): source is CaseLawSource =>
-        source.type === SourceType.CASE_LAW && source.value.isSource
-    );
+
+    const caseLawSources = sources.filter((source): source is CaseLawSource => {
+      if (source.type !== SourceType.CASE_LAW) return false;
+      // Filter alleen de bronnen met isSource: true
+      return source.value.isSource;
+    });
 
     const taxonomySources = sources.filter(
       (source): source is TaxonomySource => {
@@ -84,7 +87,12 @@ export const useSidebarStore = create<SidebarState>((set) => ({
 
     const selectielijstSources = sources.filter(
       (source): source is SelectielijstSource =>
-        source.type === SourceType.SELECTIELIJST && source.value.isSource
+        source.type === SourceType.SELECTIELIJST
+    );
+
+    const werkinstructieSources = sources.filter(
+      (source): source is WerkinstructieSource =>
+        source.type === SourceType.WERKINSTRUCTIE
     );
 
     const totalItems = sources.length; // Direct gebruik maken van sources array lengte
@@ -96,6 +104,7 @@ export const useSidebarStore = create<SidebarState>((set) => ({
       caseLawSources,
       taxonomySources,
       selectielijstSources,
+      werkinstructieSources,
       isEmpty,
       totalItems,
       isOpen: true,
@@ -109,6 +118,7 @@ export const useSidebarStore = create<SidebarState>((set) => ({
       caseLawSources: [],
       taxonomySources: [],
       selectielijstSources: [],
+      werkinstructieSources: [],
       isEmpty: true, // Reset to true when clearing data
       totalItems: 0, // Reset total count to 0
     }),

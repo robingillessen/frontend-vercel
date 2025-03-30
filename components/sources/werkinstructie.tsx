@@ -2,41 +2,48 @@
 import React from "react";
 import { SidebarMenuItem } from "../ui/sidebar";
 import { Badge } from "../ui/badge";
-import { Werkwijze } from "@/lib/types";
+import { WerkinstructieSource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
 import { SourceType } from "@/lib/types";
-
-export const Werkwijzes = ({ werkwijzes }: { werkwijzes: Werkwijze[] }) => {
+import { ParagraphSource } from "../paragraph-sources";
+export const Werkwijzes = ({
+  werkinstructies,
+}: {
+  werkinstructies: WerkinstructieSource[];
+}) => {
   const searchQuery = useSidebarStore((state) => state.searchQuery);
   const filter = useSidebarStore((state) => state.filter);
 
-  const isFiltered = filter === "werkwijzes" || filter === "all";
+  const isFiltered = filter === SourceType.WERKINSTRUCTIE || filter === "all";
 
-  const filteredWerkwijzes = werkwijzes.filter(
+  const filteredWerkinstructies = werkinstructies.filter(
     (w) =>
-      w.werkwijze_title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      w.text_fragment.toLowerCase().includes(searchQuery.toLowerCase())
+      w.value.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      w.value.chunks.some((chunk) =>
+        chunk.toLowerCase().includes(searchQuery.toLowerCase())
+      )
   );
 
   return (
     <>
       {isFiltered &&
-        filteredWerkwijzes.map((werkwijze, index) => (
+        filteredWerkinstructies.map((werkinstructie, index) => (
           <SidebarMenuItem
-            key={`werkwijze-${index}`}
+            key={`werkinstructie-${index}`}
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
+              <ParagraphSource id={werkinstructie.id} />
               <SourceBadgeText sourceType={SourceType.LAW} />
               <div className="flex-1 min-w-0">
-                <div className="font-medium truncate">{`${werkwijze.werkwijze_title}`}</div>
+                <div className="font-medium truncate">{`${werkinstructie.value.title}`}</div>
                 <div className="text-sm text-muted-foreground line-clamp-2">
-                  {werkwijze.text_fragment}
+                  {werkinstructie.value.chunks.join(" ")}
                 </div>
               </div>
               <span className="text-muted-foreground mr-2 shrink-0">
-                {werkwijzes.length}
+                {werkinstructies.length}
               </span>
             </div>
           </SidebarMenuItem>

@@ -25,7 +25,6 @@ const FileUpload = ({ onFileProcessed }: FileUploadProps) => {
         onFileProcessed(file);
       }
 
-      console.log("File selected:", file.name);
       // File processing logic can be added here
     } else {
       setFileName(null);
