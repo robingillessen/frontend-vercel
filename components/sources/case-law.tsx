@@ -60,7 +60,7 @@ export const CaseLaw = ({
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  <ParagraphSource id={source.id} />
+                  <ParagraphSource id={source.id} isNoHover />
                   <SourceBadgeText sourceType={SourceType.CASE_LAW} />
                 </div>
               </div>

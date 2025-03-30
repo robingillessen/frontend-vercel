@@ -53,7 +53,7 @@ export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  <ParagraphSource id={article.id} />
+                  <ParagraphSource id={article.id} isNoHover />
                   <SourceBadgeText sourceType={SourceType.LAW} />
                 </div>
               </div>

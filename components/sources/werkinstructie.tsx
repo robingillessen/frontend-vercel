@@ -34,7 +34,7 @@ export const Werkwijzes = ({
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
-              <ParagraphSource id={werkinstructie.id} />
+              <ParagraphSource id={werkinstructie.id} isNoHover />
               <SourceBadgeText sourceType={SourceType.LAW} />
               <div className="flex-1 min-w-0">
                 <div className="font-medium truncate">{`${werkinstructie.value.title}`}</div>

@@ -65,7 +65,7 @@ export const Taxonomy = ({
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ParagraphSource id={term.value.context[0].id} />
+                  <ParagraphSource id={term.value.context[0].id} isNoHover />
                   <SourceBadgeText sourceType={SourceType.TAXONOMY} />
                 </div>
               </div>

@@ -63,7 +63,7 @@ export const Selectielijst = ({
                   )}
                 </div>
                 <div className="flex items-center gap-2">
-                  <ParagraphSource id={item.id} />
+                  <ParagraphSource id={item.id} isNoHover />
                   <SourceBadgeText sourceType={SourceType.SELECTIELIJST} />
                 </div>
               </div>

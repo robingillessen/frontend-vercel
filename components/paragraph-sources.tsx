@@ -4,7 +4,13 @@ import { useSidebarStore } from "@/store/sidebar-store";
 import { getTailwindClasses } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-export const ParagraphSource = ({ id }: { id?: string }) => {
+export const ParagraphSource = ({
+  id,
+  isNoHover,
+}: {
+  id?: string;
+  isNoHover?: boolean;
+}) => {
   const { legalData, hoveredSourceId, setHoveredSourceId } = useSidebarStore();
 
   if (!id) return null;
@@ -55,8 +61,8 @@ export const ParagraphSource = ({ id }: { id?: string }) => {
           isHovered && cn("scale-110", borderColor, "text-white")
         )}
         key={id}
-        onMouseEnter={() => setHoveredSourceId(id)}
-        onMouseLeave={() => setHoveredSourceId(null)}
+        onMouseEnter={() => !isNoHover && setHoveredSourceId(id)}
+        onMouseLeave={() => !isNoHover && setHoveredSourceId(null)}
       >
         {id?.split("_")[1]}
       </div>
