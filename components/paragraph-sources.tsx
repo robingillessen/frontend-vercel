@@ -1,5 +1,5 @@
 import React from "react";
-import { Source } from "@/lib/types";
+import { Source, SourceType, TaxonomySource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { getTailwindClasses } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -9,7 +9,32 @@ export const ParagraphSource = ({ id }: { id?: string }) => {
 
   if (!id) return null;
 
-  const source = legalData?.answer.sources.find((source) => source.id === id);
+  // First try to find the source directly
+  let source = legalData?.answer.sources.find((source) => source.id === id);
+
+  // If not found and it's a taxonomy source, look in the context array
+  if (!source && id.startsWith("source_")) {
+    const taxonomySource = legalData?.answer.sources.find(
+      (s): s is TaxonomySource =>
+        s.type === SourceType.TAXONOMY &&
+        s.value.context.some((c) => c.id === id)
+    );
+
+    if (taxonomySource) {
+      const contextItem = taxonomySource.value.context.find((c) => c.id === id);
+      if (contextItem) {
+        source = {
+          id,
+          type: SourceType.TAXONOMY,
+          value: {
+            label: taxonomySource.value.label,
+            context: [contextItem],
+          },
+        };
+      }
+    }
+  }
+
   if (!source) return null;
 
   return (

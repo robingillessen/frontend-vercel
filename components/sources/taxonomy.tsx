@@ -27,7 +27,7 @@ export const Taxonomy = ({
             className="mb-2 border rounded-md p-2 overflow-hidden"
           >
             <div className="flex items-start gap-2 w-full">
-              <ParagraphSource id={term.id} />
+              <ParagraphSource id={term.value.context[0].id} />
               <SourceBadgeText sourceType={SourceType.TAXONOMY} />
               <div className="flex-1 min-w-0">
                 <div className="font-medium truncate">{term.value.label}</div>
