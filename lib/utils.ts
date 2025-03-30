@@ -19,13 +19,13 @@ export async function sleep(ms: number) {
 export const getTailwindClasses = (sourceType: SourceType) => {
   switch (sourceType) {
     case SourceType.TAXONOMY:
-      return "bg-yellow-500 border-yellow-500";
-    case SourceType.LAW:
-      return "bg-green-100 text-green-800 border-green-100";
+      return "bg-[#FFB611] border-[#FFB611] text-black";
     case SourceType.CASE_LAW:
-      return "bg-blue-100 text-blue-800 border-blue-100";
+      return "bg-[#027BC7] border-[#027BC7] text-white";
     case SourceType.SELECTIELIJST:
-      return "bg-purple-100 text-purple-800 border-purple-100";
+      return "bg-[#810088] border-[#810088] text-white";
+    case SourceType.LAW:
+      return "bg-[#77D2B7] border-[#77D2B7] text-black";
     default:
       return "";
   }

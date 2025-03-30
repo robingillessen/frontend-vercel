@@ -5,7 +5,7 @@ import { getTailwindClasses } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
 export const ParagraphSource = ({ id }: { id?: string }) => {
-  const { legalData } = useSidebarStore();
+  const { legalData, hoveredSourceId, setHoveredSourceId } = useSidebarStore();
 
   if (!id) return null;
 
@@ -37,14 +37,26 @@ export const ParagraphSource = ({ id }: { id?: string }) => {
 
   if (!source) return null;
 
+  const isHovered = hoveredSourceId === id;
+  const tailwindClasses = getTailwindClasses(source.type);
+  // Extract the border color from the tailwind classes
+  const borderColor =
+    tailwindClasses
+      .split(" ")
+      .find((cls) => cls.startsWith("border-"))
+      ?.replace("border-", "bg-") || "bg-gray-500";
+
   return (
     <div className="">
       <div
         className={cn(
-          getTailwindClasses(source.type),
-          "size-8 place-content-center grid rounded-md cursor-pointer bg-transparent border-2"
+          tailwindClasses,
+          "size-6 place-content-center grid rounded-md cursor-pointer bg-transparent border-2 text-xs font-medium text-black transition-all duration-200",
+          isHovered && cn("scale-110", borderColor, "text-white")
         )}
         key={id}
+        onMouseEnter={() => setHoveredSourceId(id)}
+        onMouseLeave={() => setHoveredSourceId(null)}
       >
         {id?.split("_")[1]}
       </div>

@@ -7,7 +7,10 @@ export const SourceBadgeText = ({ sourceType }: { sourceType: SourceType }) => {
   return (
     <Badge
       variant="outline"
-      className={cn(getTailwindClasses(sourceType), "rounded-full py-2")}
+      className={cn(
+        getTailwindClasses(sourceType),
+        "rounded-full py-1 px-3 text-xs font-medium"
+      )}
     >
       {
         SourceTypeLabel[

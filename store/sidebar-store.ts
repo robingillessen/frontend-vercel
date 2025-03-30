@@ -38,7 +38,12 @@ interface SidebarState {
   setFilter: (filter: SourceType | "all") => void;
 }
 
-export const useSidebarStore = create<SidebarState>((set) => ({
+interface SidebarStore extends SidebarState {
+  hoveredSourceId: string | null;
+  setHoveredSourceId: (id: string | null) => void;
+}
+
+export const useSidebarStore = create<SidebarStore>((set) => ({
   isOpen: false,
   filter: "all",
   searchQuery: "",
@@ -51,6 +56,7 @@ export const useSidebarStore = create<SidebarState>((set) => ({
   werkinstructieSources: [],
   isEmpty: true,
   totalItems: 0,
+  hoveredSourceId: null,
 
   // UI actions
   setFilter: (filter: SourceType | "all") => set({ filter }),
@@ -122,4 +128,6 @@ export const useSidebarStore = create<SidebarState>((set) => ({
       isEmpty: true, // Reset to true when clearing data
       totalItems: 0, // Reset total count to 0
     }),
+
+  setHoveredSourceId: (id) => set({ hoveredSourceId: id }),
 }));
