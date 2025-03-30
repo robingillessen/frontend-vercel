@@ -28,7 +28,11 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
           );
 
           return (
-            <div key={index} className="mb-6">
+            <div
+              onMouseEnter={() => setHoveredSourceId(null)}
+              key={index}
+              className="mb-6"
+            >
               <ReactMarkdown
                 components={{
                   a: ({ href, children }) => {
@@ -37,28 +41,23 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
                       const isHovered = hoveredSourceId === sourceId;
                       return (
                         <span
+                          onMouseEnter={() => setHoveredSourceId(sourceId)}
                           className={cn(
                             "cursor-pointer transition-all duration-200 px-1 rounded",
-                            isHovered
-                              ? "bg-white shadow-md"
-                              : "bg-yellow-200/30 hover:bg-yellow-200/80"
+                            isHovered ? "bg-yellow-200/80" : "bg-yellow-200/30 "
                           )}
-                          onClick={() => handleSourceClick(sourceId)}
-                          onMouseEnter={() => setHoveredSourceId(sourceId)}
-                          onMouseLeave={() => setHoveredSourceId(null)}
                         >
                           {children}
                         </span>
                       );
                     }
-                    return <a href={href}>{children}</a>;
                   },
                 }}
               >
                 {processedParagraph}
               </ReactMarkdown>
               <div className="flex gap-2 mt-2">
-                {Array.from(item.sources).map((sourceId) => (
+                {item.sources.map((sourceId) => (
                   <ParagraphSource key={sourceId} id={sourceId} />
                 ))}
               </div>
@@ -69,42 +68,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
     );
   }
 
-  // Handle string content (original behavior)
-  const processedContent = content.replace(
-    /([^<]+)<source_(\d+)>/g,
-    (_, word, sourceId) => `[${word}](#source_${sourceId})`
-  );
-
   return (
     <div className="markdown-content prose prose-neutral max-w-none">
-      <ReactMarkdown
-        components={{
-          a: ({ href, children }) => {
-            if (href?.startsWith("#source_")) {
-              const sourceId = href.replace("#", "");
-              const isHovered = hoveredSourceId === sourceId;
-              return (
-                <span
-                  className={cn(
-                    "cursor-pointer transition-all duration-200 px-1 rounded",
-                    isHovered
-                      ? "bg-white shadow-md"
-                      : "bg-yellow-200/30 hover:bg-yellow-200/80"
-                  )}
-                  onClick={() => handleSourceClick(sourceId)}
-                  onMouseEnter={() => setHoveredSourceId(sourceId)}
-                  onMouseLeave={() => setHoveredSourceId(null)}
-                >
-                  {children}
-                </span>
-              );
-            }
-            return <a href={href}>{children}</a>;
-          },
-        }}
-      >
-        {processedContent}
-      </ReactMarkdown>
+      <ReactMarkdown>{content}</ReactMarkdown>
     </div>
   );
 };
