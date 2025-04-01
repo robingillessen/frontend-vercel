@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/sidebar";
 import { SidebarSourcesSkeleton } from "@/components/skeleton-loaders/sidebar-sources-skeleton";
 import { LawArticles } from "./sources/law-articles";
-import { Werkwijzes } from "./sources/werkinstructie";
 import { Taxonomy } from "./sources/taxonomy";
 import { Selectielijst } from "./sources/selectielijst";
 import { CaseLaw } from "./sources/case-law";

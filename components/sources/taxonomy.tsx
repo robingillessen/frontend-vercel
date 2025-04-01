@@ -1,5 +1,4 @@
 import React from "react";
-import { Badge } from "../ui/badge";
 import { SidebarMenuItem } from "../ui/sidebar";
 import { SourceType, TaxonomySource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";

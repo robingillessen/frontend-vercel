@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { SidebarMenuItem } from "../ui/sidebar";
-import { Badge } from "../ui/badge";
 import { WerkinstructieSource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";

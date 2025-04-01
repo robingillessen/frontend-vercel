@@ -5,7 +5,7 @@ import { SourcesSidebar } from "@/components/sources-sidebar";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { cn } from "@/lib/utils";
 import { schema } from "@/lib/schemes";
-import { Message, LegalData } from "@/lib/types";
+import { Message } from "@/lib/types";
 import { MainContent } from "@/components/main-content";
 import { Disclaimer } from "@/components/disclaimer";
 import { ChatInput } from "@/components/chat-input";

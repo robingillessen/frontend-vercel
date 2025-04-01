@@ -75,7 +75,8 @@ export const NodeSimulation: React.FC = () => {
         "link",
         d3
           .forceLink(links)
-          .id((d: any) => d.id)
+          // @ts-expect-error d3 typing issue with id accessor
+          .id((d) => d.id)
           .distance(150)
       )
       .force("charge", d3.forceManyBody().strength(-300))

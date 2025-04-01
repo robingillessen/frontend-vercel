@@ -44,6 +44,7 @@ interface ILaw {
   law: string;
   url?: string;
   isSource: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   lido?: {};
 }
 

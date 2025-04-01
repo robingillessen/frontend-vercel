@@ -14,9 +14,9 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
 }) => {
   const { hoveredSourceId, setHoveredSourceId } = useSidebarStore();
 
-  const handleSourceClick = (sourceId: string) => {
-    // TODO: Implementeer source opening logica
-  };
+  // const handleSourceClick = (sourceId: string) => {
+  //   // TODO: Implementeer source opening logica
+  // };
 
   if (Array.isArray(content)) {
     return (

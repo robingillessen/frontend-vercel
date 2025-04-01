@@ -1,5 +1,5 @@
 import React from "react";
-import { Source, SourceType, TaxonomySource } from "@/lib/types";
+import { SourceType, TaxonomySource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { getTailwindClasses } from "@/lib/utils";
 import { cn } from "@/lib/utils";

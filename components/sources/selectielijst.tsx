@@ -1,10 +1,5 @@
 import React from "react";
-import { TableHead, TableHeader } from "../ui/table";
-import { TableCell, TableRow } from "../ui/table";
-import { TableBody } from "../ui/table";
 import { SidebarMenuItem } from "../ui/sidebar";
-import { Table } from "../ui/table";
-import { Badge } from "../ui/badge";
 import { SelectielijstSource, SourceType } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
