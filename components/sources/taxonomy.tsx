@@ -3,7 +3,6 @@ import { SidebarMenuItem } from "../ui/sidebar";
 import { SourceType, TaxonomySource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
-import { ParagraphSource } from "../paragraph-sources";
 import { cn } from "@/lib/utils";
 
 export const Taxonomy = ({
@@ -15,9 +14,17 @@ export const Taxonomy = ({
     useSidebarStore();
   const isFiltered = filter === SourceType.TAXONOMY || filter === "all";
 
-  const filteredTaxonomyTerms = taxonomyTerms.filter((term) =>
-    term.value.label.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // also reduce to single term per label
+  const filteredTaxonomyTerms = taxonomyTerms
+    .filter((term) =>
+      term.value.label.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .reduce<typeof taxonomyTerms>((acc, term) => {
+      if (!acc.some((t) => t.value.label === term.value.label)) {
+        acc.push(term);
+      }
+      return acc;
+    }, []);
 
   return (
     <>
@@ -64,7 +71,7 @@ export const Taxonomy = ({
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ParagraphSource id={term.value.context[0].id} isNoHover />
+                  {/* <ParagraphSource id={term.value.context[0].id} isNoHover /> */}
                   <SourceBadgeText sourceType={SourceType.TAXONOMY} />
                 </div>
               </div>
