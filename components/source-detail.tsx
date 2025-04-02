@@ -45,8 +45,8 @@ export const SourceDetail = ({ source, onBack }: SourceDetailProps) => {
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">{source.value.title}</h2>
             {source.value.document && (
-              <div className="prose prose-neutral max-w-none">
-                {source.value.document}
+              <div className="">
+                <MarkdownRenderer content={source.value.document} />
               </div>
             )}
             {source.value.url && (
@@ -141,13 +141,7 @@ export const SourceDetail = ({ source, onBack }: SourceDetailProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col pl-8 relative source-detail-container">
-      <div
-        className={cn(
-          "absolute w-1  left-5 top-24 h-full",
-          getTailwindClasses(source.type)
-        )}
-      ></div>
+    <div className="h-full flex flex-col pl-8 source-detail-container">
       <div className="flex items-center gap-2 pt-4 border-b">
         <Button
           variant="ghost"
@@ -159,8 +153,16 @@ export const SourceDetail = ({ source, onBack }: SourceDetailProps) => {
         </Button>
         <SourceBadgeText sourceType={source.type} />
       </div>
-      <div className="flex-1 overflow-auto px-4 pt-6 ">
-        {renderSourceContent()}
+      <div className="flex-1 overflow-auto relative">
+        <div className="relative min-h-full px-4 mt-4">
+          <div
+            className={cn(
+              "absolute w-1 left-0 top-0 h-full",
+              getTailwindClasses(source.type)
+            )}
+          ></div>
+          {renderSourceContent()}
+        </div>
       </div>
     </div>
   );
