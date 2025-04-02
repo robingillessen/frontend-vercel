@@ -7,6 +7,7 @@ import {
   SelectielijstSource,
   SourceType,
   WerkinstructieSource,
+  Source,
 } from "@/lib/types";
 
 interface SidebarState {
@@ -27,6 +28,9 @@ interface SidebarState {
   // Total number of items across all sources
   totalItems: number;
 
+  // Source selection state
+  selectedSource: Source | null;
+
   // UI actions
   openSidebar: () => void;
   closeSidebar: () => void;
@@ -36,6 +40,8 @@ interface SidebarState {
   setLegalData: (data: LegalData) => void;
   clearLegalData: () => void;
   setFilter: (filter: SourceType | "all") => void;
+  // Source selection actions
+  selectSource: (source: Source | null) => void;
 }
 
 interface SidebarStore extends SidebarState {
@@ -57,6 +63,7 @@ export const useSidebarStore = create<SidebarStore>((set) => ({
   isEmpty: true,
   totalItems: 0,
   hoveredSourceId: null,
+  selectedSource: null,
 
   // UI actions
   setFilter: (filter: SourceType | "all") => set({ filter }),
@@ -64,6 +71,9 @@ export const useSidebarStore = create<SidebarStore>((set) => ({
   openSidebar: () => set({ isOpen: true }),
   closeSidebar: () => set({ isOpen: false }),
   toggleSidebar: () => set((state) => ({ isOpen: !state.isOpen })),
+
+  // Source selection actions
+  selectSource: (source) => set({ selectedSource: source }),
 
   // Data actions
   setLegalData: (data: LegalData) => {
@@ -127,6 +137,7 @@ export const useSidebarStore = create<SidebarStore>((set) => ({
       werkinstructieSources: [],
       isEmpty: true, // Reset to true when clearing data
       totalItems: 0, // Reset total count to 0
+      selectedSource: null,
     }),
 
   setHoveredSourceId: (id) => set({ hoveredSourceId: id }),

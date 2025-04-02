@@ -231,3 +231,11 @@ h6 {
 .prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
   @apply mb-0;
 }
+
+.source-detail-container
+  .prose
+  :where(.prose > :last-child):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  ) {
+  padding-inline-start: 0;
+}

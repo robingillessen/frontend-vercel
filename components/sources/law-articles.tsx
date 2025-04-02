@@ -7,8 +7,13 @@ import { ParagraphSource } from "../paragraph-sources";
 import { cn } from "@/lib/utils";
 
 export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
-  const { filter, searchQuery, hoveredSourceId, setHoveredSourceId } =
-    useSidebarStore();
+  const {
+    filter,
+    searchQuery,
+    hoveredSourceId,
+    setHoveredSourceId,
+    selectSource,
+  } = useSidebarStore();
   const isFiltered = filter === SourceType.LAW || filter === "all";
   const filteredLawArticles = lawArticles.filter(
     (article) =>
@@ -25,11 +30,12 @@ export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
             <SidebarMenuItem
               key={`law-${index}`}
               className={cn(
-                "mb-2 border rounded-md p-2 overflow-hidden transition-all duration-200",
+                "mb-2 border rounded-md p-2 overflow-hidden transition-all duration-200 cursor-pointer",
                 isHovered && "bg-white shadow-md"
               )}
               onMouseEnter={() => article.id && setHoveredSourceId(article.id)}
               onMouseLeave={() => setHoveredSourceId(null)}
+              onClick={() => selectSource(article)}
             >
               <div className="flex flex-col gap-2 w-full">
                 <div className="flex items-start gap-2">
@@ -47,6 +53,7 @@ export const LawArticles = ({ lawArticles }: { lawArticles: LawSource[] }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-muted-foreground mr-2 shrink-0"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       Link
                     </a>

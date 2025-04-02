@@ -11,8 +11,13 @@ export const Selectielijst = ({
 }: {
   selectielijstRows: SelectielijstSource[];
 }) => {
-  const { filter, searchQuery, hoveredSourceId, setHoveredSourceId } =
-    useSidebarStore();
+  const {
+    filter,
+    searchQuery,
+    hoveredSourceId,
+    setHoveredSourceId,
+    selectSource,
+  } = useSidebarStore();
   const isFiltered = filter === SourceType.SELECTIELIJST || filter === "all";
 
   const filteredSelectielijstRows = selectielijstRows.filter(
@@ -35,11 +40,12 @@ export const Selectielijst = ({
             <SidebarMenuItem
               key={`selectielijst-${index}`}
               className={cn(
-                "mb-2 border rounded-md p-2 overflow-hidden transition-all duration-200",
+                "mb-2 border rounded-md p-2 overflow-hidden transition-all duration-200 cursor-pointer",
                 isHovered && "bg-white shadow-md"
               )}
               onMouseEnter={() => item.id && setHoveredSourceId(item.id)}
               onMouseLeave={() => setHoveredSourceId(null)}
+              onClick={() => selectSource(item)}
             >
               <div className="flex flex-col gap-2 w-full">
                 <div className="flex items-start gap-2">
