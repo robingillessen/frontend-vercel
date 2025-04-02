@@ -6,7 +6,6 @@ import { ArrowLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { SourceBadgeText } from "./source-badge-text";
 import { cn, getTailwindClasses } from "@/lib/utils";
-import ReactMarkdown from "react-markdown";
 import { MarkdownRenderer } from "./markdown-renderer";
 
 interface SourceDetailProps {
@@ -96,42 +95,43 @@ export const SourceDetail = ({ source, onBack }: SourceDetailProps) => {
 
       case SourceType.SELECTIELIJST:
         return (
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">{source.value.name}</h2>
-            <div className="space-y-6">
-              {source.value.rows.map((row, index) => (
-                <div key={index} className="border rounded-lg p-4 space-y-2">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <p className="font-medium">Functie</p>
-                      <p className="text-muted-foreground">{row.functie}</p>
-                    </div>
-                    <div>
-                      <p className="font-medium">Categorie</p>
-                      <p className="text-muted-foreground">{row.categorie}</p>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-medium">Onderwerp</p>
-                    <p className="text-muted-foreground">{row.onderwerp}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Omschrijving</p>
-                    <p className="text-muted-foreground">{row.omschrijving}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Waardering</p>
-                    <p className="text-muted-foreground">{row.waardering}</p>
-                  </div>
-                  <div>
-                    <p className="font-medium">Voorbeeldstukken</p>
-                    <p className="text-muted-foreground">
-                      {row.voorbeeldstukken}
-                    </p>
-                  </div>
+          <div className="space-y-6">
+            {source.value.rows.map((row, index) => (
+              <div key={index} className="space-y-4">
+                <div className="space-y-1">
+                  <div className="text-sm text-slate-400">Proces</div>
+                  <div className="font-medium text-lg">{row.categorie}</div>
                 </div>
-              ))}
-            </div>
+
+                <div className="relative pl-6">
+                  <div className="text-sm text-slate-400">Onderwerp</div>
+                  <div className="font-medium">{row.onderwerp}</div>
+                  {/* L-shaped connector */}
+                  <div className="absolute left-[7px] top-[12px] h-[1px] w-3 border-t border-dashed border-slate-400" />
+                  <div className="absolute left-[7px] top-0 h-[12px] border-l border-dashed border-slate-400" />
+                </div>
+
+                <div className="relative pl-12">
+                  <div className="text-sm text-slate-400">Bewaartermijn</div>
+                  <div>{row.waardering}</div>
+                  {/* L-shaped connector */}
+                  <div className="absolute left-[13px] top-[12px] h-[1px] w-3 border-t border-dashed border-slate-400" />
+                  <div className="absolute left-[13px] top-0 h-[12px] border-l border-dashed border-slate-400" />
+                </div>
+
+                <div className="relative pl-12">
+                  <div className="text-sm text-slate-400">Voorbeeldstukken</div>
+                  <div>{row.voorbeeldstukken}</div>
+                  {/* L-shaped connector */}
+                  <div className="absolute left-[13px] top-[12px] h-[1px] w-3 border-t border-dashed border-slate-400" />
+                  <div className="absolute left-[13px] top-0 h-[12px] border-l border-dashed border-slate-400" />
+                </div>
+
+                {index < source.value.rows.length - 1 && (
+                  <div className="pt-4 border-b" />
+                )}
+              </div>
+            ))}
           </div>
         );
 
@@ -153,14 +153,14 @@ export const SourceDetail = ({ source, onBack }: SourceDetailProps) => {
         </Button>
         <SourceBadgeText sourceType={source.type} />
       </div>
-      <div className="flex-1 overflow-auto relative">
-        <div className="relative min-h-full px-4 mt-4">
+      <div className="flex-1 overflow-auto pb-12">
+        <div className="relative  px-4 pt-6">
           <div
             className={cn(
               "absolute w-1 left-0 top-0 h-full",
               getTailwindClasses(source.type)
             )}
-          ></div>
+          />
           {renderSourceContent()}
         </div>
       </div>

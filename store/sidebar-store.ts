@@ -102,8 +102,13 @@ export const useSidebarStore = create<SidebarStore>((set) => ({
     );
 
     const selectielijstSources = sources.filter(
-      (source): source is SelectielijstSource =>
-        source.type === SourceType.SELECTIELIJST
+      (source): source is SelectielijstSource => {
+        if (source.type !== SourceType.SELECTIELIJST) return false;
+        // Filter rows to only include those with isSource: true
+        source.value.rows = source.value.rows.filter((row) => row.isSource);
+        // Only keep sources that still have rows after filtering
+        return source.value.rows.length > 0;
+      }
     );
 
     const werkinstructieSources = sources.filter(

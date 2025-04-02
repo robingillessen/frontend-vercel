@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { TextParagraph } from "@/lib/types";
 import { ParagraphSource } from "./paragraph-sources";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
 
 interface MarkdownRendererProps {
   content: TextParagraph[] | string;
@@ -13,6 +14,7 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
   content,
 }) => {
   const { hoveredSourceId, setHoveredSourceId } = useSidebarStore();
+  const [showAllSources, setShowAllSources] = useState(false);
 
   // const handleSourceClick = (sourceId: string) => {
   //   // TODO: Implementeer source opening logica
@@ -56,11 +58,20 @@ export const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({
               >
                 {processedParagraph}
               </ReactMarkdown>
-              <div className="flex gap-2 mt-2">
-                {item.sources.map((sourceId) => (
-                  <ParagraphSource key={sourceId} id={sourceId} />
-                ))}
-              </div>
+              {item.sources.length < 5 || showAllSources ? (
+                <div className="flex gap-2 mt-2">
+                  {item.sources.map((sourceId) => (
+                    <ParagraphSource key={sourceId} id={sourceId} />
+                  ))}
+                </div>
+              ) : (
+                <Button
+                  variant="secondary"
+                  onClick={() => setShowAllSources(!showAllSources)}
+                >
+                  Alle {item.sources.length} bronnen
+                </Button>
+              )}
             </div>
           );
         })}
