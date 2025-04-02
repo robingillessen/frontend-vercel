@@ -4,6 +4,7 @@ import { SourceType, TaxonomySource } from "@/lib/types";
 import { useSidebarStore } from "@/store/sidebar-store";
 import { SourceBadgeText } from "../source-badge-text";
 import { cn } from "@/lib/utils";
+import { ParagraphSource } from "../paragraph-sources";
 
 export const Taxonomy = ({
   taxonomyTerms,
@@ -50,24 +51,6 @@ export const Taxonomy = ({
                     <div className="font-medium truncate">
                       {term.value.label}
                     </div>
-                    {term.value.context.map((ctx, ctxIndex) => (
-                      <div
-                        key={ctx.id || ctxIndex}
-                        className="text-sm text-muted-foreground mt-1"
-                      >
-                        <div className="line-clamp-2">{ctx.definition}</div>
-                        {ctx.wetcontext?.url && (
-                          <a
-                            href={ctx.wetcontext.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs text-blue-600 hover:underline"
-                          >
-                            Wetgeving context
-                          </a>
-                        )}
-                      </div>
-                    ))}
                   </div>
                 </div>
                 <div className="flex items-center gap-2">

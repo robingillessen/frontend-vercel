@@ -15,8 +15,15 @@ export const Selectielijst = ({
     useSidebarStore();
   const isFiltered = filter === SourceType.SELECTIELIJST || filter === "all";
 
-  const filteredSelectielijstRows = selectielijstRows.filter((row) =>
-    row.value?.title?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredSelectielijstRows = selectielijstRows.filter(
+    (row) =>
+      row.value?.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      row.value?.rows?.some((row) =>
+        row.omschrijving.toLowerCase().includes(searchQuery.toLowerCase())
+      ) ||
+      row.value?.rows?.some((row) =>
+        row.voorbeeldstukken.toLowerCase().includes(searchQuery.toLowerCase())
+      )
   );
 
   return (
@@ -38,24 +45,10 @@ export const Selectielijst = ({
                 <div className="flex items-start gap-2">
                   <div className="flex-1 min-w-0">
                     <div className="font-medium truncate">
-                      {item.value.title}
+                      {item.value.name.charAt(0).toUpperCase() +
+                        item.value.name.slice(1)}
                     </div>
-                    {item.value.document && (
-                      <div className="text-sm text-muted-foreground line-clamp-2">
-                        {item.value.document}
-                      </div>
-                    )}
                   </div>
-                  {item.value.url && (
-                    <a
-                      href={item.value.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground mr-2 shrink-0"
-                    >
-                      Link
-                    </a>
-                  )}
                 </div>
                 <div className="flex items-center gap-2">
                   <ParagraphSource id={item.id} isNoHover />

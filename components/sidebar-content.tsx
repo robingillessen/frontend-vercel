@@ -37,7 +37,6 @@ export function SidebarContent() {
             <>
               <LawArticles lawArticles={lawArticles} />
               <CaseLaw caseLawSources={caseLawSources} />
-              {/* <Werkwijzes werkwijzes={werkwijzes} /> */}
               <Taxonomy taxonomyTerms={taxonomySources} />
               <Selectielijst selectielijstRows={selectielijstSources} />
             </>

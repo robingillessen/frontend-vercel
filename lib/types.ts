@@ -24,11 +24,20 @@ interface BaseSource {
   type: SourceType;
 }
 
-interface ISelectielijst {
-  document?: string;
-  title: string;
-  url: string;
+interface ISelectielijstRow {
+  selectielijsten: string;
+  functie: string;
+  categorie: string;
+  onderwerp: string;
+  omschrijving: string;
+  waardering: string;
+  voorbeeldstukken: string;
   isSource: boolean;
+}
+
+interface ISelectielijst {
+  name: string;
+  rows: ISelectielijstRow[];
 }
 
 interface IWerkinstructie {
@@ -91,6 +100,7 @@ export interface TaxonomySource extends BaseSource {
 }
 
 export interface SelectielijstSource extends BaseSource {
+  id: string;
   type: SourceType.SELECTIELIJST;
   value: ISelectielijst;
 }
