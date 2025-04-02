@@ -63,30 +63,40 @@ export const SourceDetail = ({ source, onBack }: SourceDetailProps) => {
 
       case SourceType.TAXONOMY:
         return (
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">{source.value.label}</h2>
+          <div className="space-y-6">
+            <div className="space-y-1">
+              <div className="text-sm text-slate-400">Definitie</div>
+              <div className="font-medium text-lg">{source.value.label}</div>
+            </div>
+
             {source.value.context.map((ctx, index) => (
-              <div key={ctx.id || index} className="space-y-2">
-                <p className="text-muted-foreground">{ctx.definition}</p>
-                {ctx.naderToegelicht.length > 0 && (
-                  <div>
-                    <h3 className="font-medium mb-2">Nader toegelicht:</h3>
-                    <ul className="list-disc pl-5 space-y-1">
+              <div key={index} className="space-y-4">
+                <div className="relative pl-6">
+                  <div className="text-sm text-slate-400">{ctx.source}</div>
+                  <div className="font-medium">{ctx.definition}</div>
+                  {/* L-shaped connector */}
+                  <div className="absolute left-[7px] top-[12px] h-[1px] w-3 border-t border-dashed border-slate-400" />
+                  <div className="absolute left-[7px] top-0 h-[12px] border-l border-dashed border-slate-400" />
+                </div>
+
+                {ctx.naderToegelicht && ctx.naderToegelicht.length > 0 && (
+                  <div className="relative pl-6">
+                    <div className="text-sm text-slate-400">
+                      Richtlijn gegevensbescherming bij rechtshandhaving
+                    </div>
+                    <div>
                       {ctx.naderToegelicht.map((item, i) => (
-                        <li key={i}>{item}</li>
+                        <div key={i}>{item}</div>
                       ))}
-                    </ul>
+                    </div>
+                    {/* L-shaped connector */}
+                    <div className="absolute left-[13px] top-[12px] h-[1px] w-3 border-t border-dashed border-slate-400" />
+                    <div className="absolute left-[13px] top-0 h-[12px] border-l border-dashed border-slate-400" />
                   </div>
                 )}
-                {ctx.wetcontext?.url && (
-                  <a
-                    href={ctx.wetcontext.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline block mt-2"
-                  >
-                    Bekijk wettelijke context
-                  </a>
+
+                {index < source.value.context.length - 1 && (
+                  <div className="pt-4" />
                 )}
               </div>
             ))}

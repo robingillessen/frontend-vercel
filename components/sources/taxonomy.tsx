@@ -11,8 +11,13 @@ export const Taxonomy = ({
 }: {
   taxonomyTerms: TaxonomySource[];
 }) => {
-  const { filter, searchQuery, hoveredSourceId, setHoveredSourceId } =
-    useSidebarStore();
+  const {
+    filter,
+    searchQuery,
+    hoveredSourceId,
+    setHoveredSourceId,
+    selectSource,
+  } = useSidebarStore();
   const isFiltered = filter === SourceType.TAXONOMY || filter === "all";
 
   // also reduce to single term per label
@@ -36,9 +41,10 @@ export const Taxonomy = ({
             <SidebarMenuItem
               key={`term-${index}`}
               className={cn(
-                "mb-2 border rounded-md p-2 overflow-hidden transition-all duration-200",
+                "mb-2 border rounded-md p-2 overflow-hidden transition-all duration-200 cursor-pointer",
                 isHovered && "bg-white shadow-md"
               )}
+              onClick={() => selectSource(term)}
               onMouseEnter={() =>
                 term.value.context[0].id &&
                 setHoveredSourceId(term.value.context[0].id)
